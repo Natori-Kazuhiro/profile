@@ -1,12 +1,107 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>profile</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>profile</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/container-query-polyfill@1/dist/container-query-polyfill.modern.js"></script>
+  <link rel="preload" href="./css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+
 </head>
+
 <body>
-  <p>profile</p>
+
+  <header>
+    <h1>profile</h1>
+    <nav>
+      <a href="#about">about</a>
+      <a href="#projects">projects</a>
+      <a href="#contact">contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>about</h2>
+      <div class="skills">
+        <div class="skill">
+          <h3>web</h3>
+          <ul>
+            <li>HTML</li>
+            <li>Pug</li>
+            <li>CSS,SASS,SCSS</li>
+            <li>JavaScript</li>
+            <li>jQuery</li>
+            <li>Markdown</li>
+            <li>Git,Gitlab</li>
+            <li>VSCode</li>
+          </ul>
+        </div>
+        <div class="skill">
+          <h3>design</h3>
+          <ul>
+            <li>Adobe Photoshop</li>
+            <li>Adobe Illustrator</li>
+            <li>Affinity Publisher</li>
+            <li>Affinity Designer</li>
+            <li>Affinity Photo</li>
+          </ul>
+        </div>
+        <div class="skill">
+          <h3>movie</h3>
+          <ul>
+            <li>shooting</li>
+            <li>editing</li>
+            <li>lighting</li>
+            <li>XPRI NS</li>
+            <li>Adobe Premiere Pro</li>
+          </ul>
+        </div>
+      </div>
+      <p>
+        HTML5およびCSS3の深い理解や各種デバイスやクロスブラウザー対応、レスポンシブWebデザインに関する知識があります。<br>
+        その他マークアップ・コーディングに付随するものとしては、アクセシビリティに関する知識,バージョン管理システムを使用したコード管理,テンプレートエンジンを使用したマークアップの効率化を行っています。
+      </p>
+      <p>
+        ミニマルなデザインや精密な文字組みが得意です。
+      </p>
+    </section>
+
+    <section id="projects">
+      <h2>projects</h2>
+      <div class="projectItems">
+        <div class="projectItem">
+          <a href="">
+            <p>pythonで画像から文字生成</p>
+            <p>link</p>
+            <p>
+              <img src="./img/" decording="async" loading="lazy" alt="イメージ画像">
+            </p>
+          </a>
+        </div>
+        <div class="projectItem">
+          <p>Three.jsで動くねじ</p>
+          <p>test</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>contact</h2>
+      <div id="contact__form">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfxlrSsCUGl79m6VLtDI5Vq0_FpmrwZ9XzwKqoyLhZLE5cHlA/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
+      </div>
+    </section>
+
+
+  </main>
+
+
+
+
 </body>
+
 </html>
