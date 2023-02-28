@@ -100,7 +100,7 @@ font-family: 'Rubik Mono One', sans-serif; */
     }
 
     section h2{
-        margin-bottom: 0.5em;
+        margin-bottom: 1em;
         font-size: var(--font-size-L);
         font-family: var(--font-family-heading);
     }
@@ -119,11 +119,13 @@ font-family: 'Rubik Mono One', sans-serif; */
     #about .skill ul{
         margin-bottom: 3em;
         font-size: var(--font-size-S);
+        line-height: 1.7;
     }
 
     #projects .projectItems{
         display: grid;
-        grid-template: 1fr / 1fr 1fr;
+        grid-template: 1fr 1fr / 1fr;
+        grid-column-gap: 1em;
     }
 
     #contact__form iframe{
