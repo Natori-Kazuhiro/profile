@@ -21,12 +21,31 @@
     <nav>
       <a href="#about">about</a>
       <a href="#projects">projects</a>
-      <a href="#contact">contact</a>
+      <button class="js-contactDialogOpen">contact</button>
     </nav>
   </header>
 
   <main>
-    <section id="about" class="animonItem">
+
+    <!-- モーダル -->
+    <dialog id="contactDialog">
+      <div class="js-contactDialogInner">
+        <p>モーダルのコンテンツ</p>
+        <iframe id="contactDialogIframe" src="https://docs.google.com/forms/d/e/1FAIpQLSfxlrSsCUGl79m6VLtDI5Vq0_FpmrwZ9XzwKqoyLhZLE5cHlA/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
+        <button class="js-contactDialogClose">閉じる</button>
+      </div>
+    </dialog>
+
+    <section class="fv">
+      <!-- キャッチーなヒーローイメージ -->
+      <picture>
+        <img src="" alt="" decording="async">
+      </picture>
+      <!-- FVにボタン置く -->
+      <button class="js-contactDialogOpen">contact</button>
+    </section>
+
+    <section id="about" class="animonItem" data-effect="fadeIn">
       <h2>about</h2>
       <div class="skills">
         <div class="skill">
@@ -37,6 +56,7 @@
             <li>CSS,SASS,SCSS</li>
             <li>JavaScript</li>
             <li>jQuery</li>
+            <li>Gulp,npm-scripts</li>
             <li>Markdown</li>
             <li>Git,Gitlab</li>
             <li>VSCode</li>
@@ -65,10 +85,12 @@
           </ul>
         </div>
       </div>
+      <h3>detail</h3>
       <p>
         web<br>
         HTML5およびCSS3の深い理解や各種デバイスやクロスブラウザー対応、レスポンシブWebデザインに関する知識があります。<br>
-        その他マークアップ・コーディングに付随するものとしては、アクセシビリティに関する知識,バージョン管理システムを使用したコード管理,テンプレートエンジンを使用したマークアップの効率化を行っています。
+        その他マークアップ・コーディングに付随するものとしては、アクセシビリティに関する知識,バージョン管理システムを使用したコード管理,テンプレートエンジンを使用したマークアップの効率化を行っています。<br>
+        AIの使用による制作の効率化にも関心があり、このサイトの制作にもChatGPTや画像の生成サイトを利用しています。
       </p>
       <p>
         design<br>
@@ -76,19 +98,19 @@
       </p>
       <p>
         movie<br>
-        
       </p>
     </section>
 
-    <section id="projects" class="animonItem">
+    <section id="projects" class="animonItem" data-effect="fadeIn">
       <h2>projects</h2>
       <div class="projectItems">
         <div class="projectItem">
+            <p>デザイン・コーディング</p>
             <p>画像から日本語テキストを抽出してテキスト化出来るサイトを制作しました。</p>
             <p>ブラウザから実行出来るPythonのライブラリTesseractを利用しています。</p>
             <p>
               使用技術<br>
-              HTML,CSS,JavaScript,Python,design
+              HTML,CSS,JavaScript,Python
             </p>
             <a href="./projects/scrapingAlt/">
               <p>
@@ -111,14 +133,17 @@
           </a>
         </div>
       </div>
+      <!-- 他にポートフォリオになるサイトを貼る -->
+      <!-- 鍵をかけて過去に制作したサイトを貼る -->
     </section>
 
-    <section id="contact" class="animonItem">
+    <!-- モーダルでの実装に切り替えたのでいったんナシ -->
+    <!-- <section id="contact" class="animonItem" data-effect="fadeIn">
       <h2>contact</h2>
       <div id="contact__form">
         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfxlrSsCUGl79m6VLtDI5Vq0_FpmrwZ9XzwKqoyLhZLE5cHlA/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
       </div>
-    </section>
+    </section> -->
 
 
   </main>
@@ -129,6 +154,7 @@
   <script defer>
       Animon.animon();
   </script>
+  <script src="./js/contactModal.js" defer></script>
 
 </body>
 

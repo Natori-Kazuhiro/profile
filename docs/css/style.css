@@ -53,8 +53,8 @@ font-family: 'Rubik Mono One', sans-serif; */
 
     header{
         container-type: inline-size;
-        position: sticky;
-        inset: 0;
+        position: fixed;
+        inset: 0 0 auto;
         z-index: 3;
         display: grid;
         grid-template: 1fr / 1fr max-content;
@@ -63,6 +63,7 @@ font-family: 'Rubik Mono One', sans-serif; */
         width: var(--width-inner);
         height: var(--header-height);
         margin: auto;
+        padding: 5%;
         font-family: var(--font-family-heading);
         border-bottom: solid 1px var(--color-white);
         backdrop-filter: blur(0.4cqw);
@@ -79,8 +80,22 @@ font-family: 'Rubik Mono One', sans-serif; */
         grid-column-gap: 1em;
     }
 
-    header nav > a{
+    header nav > *{
         color: var(--color-white);
+    }
+
+    #contactDialog{
+        width: 95cqw;
+        height: auto;
+        margin: auto;
+    }
+
+    #contactDialog::backdrop{
+        background: rgba(0, 0, 0, 0.7);
+    }
+
+    #contactDialog #contactDialogIframe{
+        width: 100%;
     }
 
     main{
@@ -91,6 +106,11 @@ font-family: 'Rubik Mono One', sans-serif; */
 
     main p{
         font-size: var(--font-size-S);
+    }
+
+    main h3{
+        font-size: var(--font-size-M);
+        font-family: var(--font-family-heading);
     }
 
     section{
@@ -112,8 +132,6 @@ font-family: 'Rubik Mono One', sans-serif; */
 
     #about .skill h3{
         margin-bottom: 0.5em;
-        font-size: var(--font-size-M);
-        font-family: var(--font-family-heading);
     }
 
     #about .skill ul{
@@ -131,7 +149,7 @@ font-family: 'Rubik Mono One', sans-serif; */
     #contact__form iframe{
         width: 100%;
         /* 高さが可変しないのでひとまず固定値を与える */
-        height: 1000px;
+        /* height: 1000px; */
     }
 
     #contact__form iframe body > div > div{
@@ -169,7 +187,7 @@ font-family: 'Rubik Mono One', sans-serif; */
 
         #contact__form iframe{
             /* 高さが可変しないのでひとまず固定値を与える */
-            height: 140cqw;
+            /* height: 140cqw; */
         }
 
 
