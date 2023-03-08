@@ -1,47 +1,30 @@
-// コンタクトフォームに関する機能
 const contactDialog = document.getElementById('contactDialog');
+const body = document.body;
 
-// モーダルを開くイベント
-let contactDialogOpenNodeList = document.querySelectorAll('.js-contactDialogOpen');
-for (let contactDialogOpenNode = 0; contactDialogOpenNode < contactDialogOpenNodeList.length; contactDialogOpenNode++) {
-    contactDialogOpenNodeList[contactDialogOpenNode].addEventListener("click", (e) => {
-        contactDialog.showModal();
-    });
-};
+function closeDialog() {
+  // モーダルを閉じる
+  contactDialog.close();
+  // 「モーダル以外のスクロール禁止」を解除
+  body.style.overflow = 'auto';
+}
 
-// クローズボタンでクリックでモーダルを閉じる
-let contactDialogCloseNodeList = document.querySelectorAll('.js-contactDialogClose');
-for (let contactDialogCloseNode = 0; contactDialogCloseNode < contactDialogCloseNodeList.length; contactDialogCloseNode++) {
-    contactDialogCloseNodeList[contactDialogCloseNode].addEventListener("click", (e) => {
-        contactDialog.close();
-    });
-};
+function openDialog() {
+  // モーダルを開く
+  contactDialog.showModal();
+  // モーダル以外のスクロール禁止
+  body.style.overflow = 'hidden';
+}
 
-// モーダルの範囲外をクリックするとモーダルを閉じる
-contactDialog.addEventListener("click", (e) => {
-    // クリック位置がモーダルの外であれば
-    if(!e.target.closest(".js-contactDialogInner")) {
-        // 現在開いているモーダルをクローズ
-        contactDialog.close();
-    }
-    else{
-        // クリック位置がモーダル内であれば処理なし
-    };
+document.querySelectorAll('.js-contactDialogOpen').forEach((contactDialogOpenNode) => {
+  contactDialogOpenNode.addEventListener('click', openDialog);
 });
 
+document.querySelectorAll('.js-contactDialogClose').forEach((contactDialogCloseNode) => {
+  contactDialogCloseNode.addEventListener('click', closeDialog);
+});
 
-
-// リサイズイベント
-function resizeIframe() {
-    var iframe = document.getElementById('contactDialogIframe');
-    var iframeBody = iframe.contentDocument.body;
-    var iframeHeight = iframeBody.scrollHeight;
-    iframe.style.height = iframeHeight + 'px';
+contactDialog.addEventListener('click', (e) => {
+  if (!e.target.closest('.js-contactDialogInner')) {
+    closeDialog();
   }
-  
-  // iframe内のコンテンツが変更された場合に、iframeの高さを再計算する
-  window.addEventListener('message', function(event) {
-    if (event.data === 'resizeIframe') {
-      resizeIframe();
-    }
-  });
+});
