@@ -29,6 +29,9 @@ font-family: 'Rubik Mono One', sans-serif; */
         --font-kerning: palt;
         --width-inner: min(100%, 960px);
         --header-height: 100px;
+        --sb-track-color: #232e33;
+        --sb-thumb-color: #6baf8d;
+        --sb-size: 10px;
         scroll-behavior: smooth;
         /* ページ内スクロール時の高さ調整 */
         scroll-padding-top: var(--header-height);
@@ -39,7 +42,30 @@ font-family: 'Rubik Mono One', sans-serif; */
         font-family: YakuHanJP, 'IBM Plex Sans' ,'Noto Sans JP' , sans-serif;
         color: var(--color-white);
         background-color: var(--color-darkNavy);
+        scrollbar-color: var(--sb-thumb-color) 
+        var(--sb-track-color);
     }
+
+    dialog{
+    scrollbar-color: var(--sb-thumb-color) 
+    var(--sb-track-color);
+
+    }
+
+    body::-webkit-scrollbar {
+        width: var(--sb-size);
+    }
+
+    body::-webkit-scrollbar-track {
+        background: var(--sb-track-color);
+        border-radius: 1px;
+    }
+
+    body::-webkit-scrollbar-thumb {
+        background: var(--sb-thumb-color);
+        border-radius: 1px;
+    }
+
 
     h1,h2,h3,p{
         width: fit-content;
@@ -167,6 +193,17 @@ font-family: 'Rubik Mono One', sans-serif; */
     main h3{
         font-size: var(--font-size-M);
         font-family: var(--font-family-heading);
+    }
+
+    main .contactDialogOpen{
+        font-size: var(--font-size-L);
+        font-family: var(--font-family-heading);
+        color: var(--color-darkNavy);
+        background-color: var(--color-white);
+    }
+
+    main .contactDialogOpen:hover{
+        opacity: 0.5;
     }
 
     section{

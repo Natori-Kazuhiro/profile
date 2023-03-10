@@ -1,30 +1,25 @@
 const contactDialog = document.getElementById('contactDialog');
 const body = document.body;
+const contactDialogOpenNodes = document.querySelectorAll('.js-contactDialogOpen');
+const contactDialogCloseNodes = document.querySelectorAll('.js-contactDialogClose');
 
-function closeDialog() {
-  // モーダルを閉じる
-  contactDialog.close();
-  // 「モーダル以外のスクロール禁止」を解除
-  body.style.overflow = 'auto';
+function toggleDialog(open) {
+  contactDialog[open ? 'showModal' : 'close']();
+  body.style.overflow = open ? 'hidden' : 'auto';
 }
 
-function openDialog() {
-  // モーダルを開く
-  contactDialog.showModal();
-  // モーダル以外のスクロール禁止
-  body.style.overflow = 'hidden';
-}
-
-document.querySelectorAll('.js-contactDialogOpen').forEach((contactDialogOpenNode) => {
-  contactDialogOpenNode.addEventListener('click', openDialog);
-});
-
-document.querySelectorAll('.js-contactDialogClose').forEach((contactDialogCloseNode) => {
-  contactDialogCloseNode.addEventListener('click', closeDialog);
-});
-
-contactDialog.addEventListener('click', (e) => {
-  if (!e.target.closest('.js-contactDialogInner')) {
-    closeDialog();
+function dialogToggleSwitch(event) {
+  const contactDialogOpenNode = event.target.closest('.js-contactDialogOpen');
+  const contactDialogCloseNode = event.target.closest('.js-contactDialogClose');
+  const contactDialogInnerNode = event.target.closest('.js-contactDialogInner');
+  
+  if (contactDialogOpenNode) {
+    toggleDialog(true);
+  } else if (contactDialogCloseNode || !contactDialogInnerNode) {
+    toggleDialog(false);
   }
-});
+}
+
+contactDialogOpenNodes.forEach(node => node.addEventListener('click', dialogToggleSwitch));
+contactDialogCloseNodes.forEach(node => node.addEventListener('click', dialogToggleSwitch));
+contactDialog.addEventListener('click', dialogToggleSwitch);
