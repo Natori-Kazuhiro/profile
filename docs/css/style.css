@@ -45,11 +45,10 @@ font-family: 'Rubik Mono One', sans-serif; */
         scrollbar-color: var(--sb-thumb-color) 
         var(--sb-track-color);
     }
-
+    /* 効いてないかも */
     dialog{
-    scrollbar-color: var(--sb-thumb-color) 
-    var(--sb-track-color);
-
+        scrollbar-color: var(--sb-thumb-color) 
+        var(--sb-track-color);
     }
 
     body::-webkit-scrollbar {
@@ -236,7 +235,12 @@ font-family: 'Rubik Mono One', sans-serif; */
     #projects .projectItems{
         display: grid;
         grid-template: 1fr 1fr / 1fr;
-        grid-column-gap: 1em;
+        grid-column-gap: 5em;
+        font-size: var(--font-size-S);
+    }
+
+    #projects .projectItems .projectItem{
+        margin-bottom: 5em;
     }
 
     #contact__form iframe{
