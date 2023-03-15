@@ -32,6 +32,8 @@ function buildScene() {
     chainSegments
   );
 
+  const chainMaterial = new THREE.MeshStandardMaterial({ color: 0x808080 });
+
   // 左側の円柱
   const leftCylinderMesh = new THREE.Mesh(cylinderGeometry, chainMaterial);
   leftCylinderMesh.position.set(-2, chainLength / 2, 0);
@@ -40,66 +42,51 @@ function buildScene() {
   const rightCylinderMesh = new THREE.Mesh(cylinderGeometry, chainMaterial);
   rightCylinderMesh.position.set(2, chainLength / 2, 0);
 
-  // 上側のカーブ
-  const topCurvePoints = [
-    new THREE.Vector3(0, chainLength / 2, 0),
-    new THREE.Vector3(1.5, chainLength / 2, 0),
-    new THREE.Vector3(2.5, chainLength / 4, 0),
-    new THREE.Vector3(1.5, 0, 0),
-    new THREE.Vector3(0, 0, 0)
-  ];
-  const topCurve = new THREE.CatmullRomCurve3(topCurvePoints);
-  const topCurveGeometry = new THREE.TubeGeometry(
-    topCurve,
-    topCurvePoints.length * 4,
-    chainRadius,
-    chainSegments,
-    false
-  );
-  const topCurveMesh = new THREE.Mesh(topCurveGeometry, chainMaterial);
-  topCurveMesh.position.set(0, chainLength / 2, 0);
+  // カーブの始点と終点
+  const bottomCurveStart = new THREE.Vector3(-2, 0, 0);
+  const bottomCurveEnd = new THREE.Vector3(2, 0, 0);
 
-  // 下側のカーブ
+  // カーブ
   const bottomCurvePoints = [
-    new THREE.Vector3(0, -chainLength / 2, 0),
-    new THREE.Vector3(1.5, -chainLength / 2, 0),
-    new THREE.Vector3(2.5, -chainLength / 4, 0),
-    new THREE.Vector3(1.5, 0, 0),
-    new THREE.Vector3(0, 0, 0)
+    bottomCurveStart,
+    new THREE.Vector3(0, -2, 0),
+    bottomCurveEnd,
   ];
-  const bottomCurve = new THREE.CatmullRomCurve3(bottomCurvePoints);
-  const bottomCurveGeometry = new THREE.TubeGeometry(
-    bottomCurve,
+  const curve = new THREE.CatmullRomCurve3(bottomCurvePoints);
+  const curveGeometry = new THREE.TubeGeometry(
+    curve,
     bottomCurvePoints.length * 4,
     chainRadius,
     chainSegments,
     false
   );
-  const bottomCurveMesh = new THREE.Mesh(bottomCurveGeometry, chainMaterial);
-  bottomCurveMesh.position.set(0, -chainLength / 2, 0);
-  
+  const curveMesh = new THREE.Mesh(curveGeometry, chainMaterial);
 
   scene.add(leftCylinderMesh);
   scene.add(rightCylinderMesh);
-  scene.add(topCurveMesh);
-  scene.add(bottomCurveMesh);
-
-
+  scene.add(curveMesh);
 }
+
+
 
 buildScene();
 
 // ここまでシーン
 
+// ライティング
+// 環境光
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+scene.add(ambientLight);
 
-// スポットライトを作成
+// スポットライト
 const spotLight = new THREE.SpotLight(0xffffff, 1);
 spotLight.position.set(5, 10, 5);
 spotLight.angle = Math.PI / 5;
 spotLight.penumbra = 0.5;
 spotLight.decay = 2;
-spotLight.distance = 200;
+spotLight.distance = 500;
 scene.add(spotLight);
+
 
 // レンダリングする
 function render() {
