@@ -76,7 +76,7 @@ function buildScene() {
     false
   );
   const bottomCurveMesh = new THREE.Mesh(bottomCurveGeometry, chainMaterial);
-  bottomCurveMesh.position.set(0, -chainLdsength / 2, 0);
+  bottomCurveMesh.position.set(0, -chainLength / 2, 0);
   
 
   scene.add(leftCylinderMesh);
