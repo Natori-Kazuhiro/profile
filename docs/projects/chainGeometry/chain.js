@@ -2,68 +2,96 @@
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.z = 5;
-const renderer = new THREE.WebGLRenderer({ antialias: true });
+
+const renderer = new THREE.WebGLRenderer({
+  antialias: true
+});
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setClearColor(0x000000, 1);
+renderer.setClearColor(0xffffff, 1);
 document.body.appendChild(renderer.domElement);
 
-// 立体の金属的な鎖のマテリアルを作成
-const chainMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff, metalness: 1, roughness: 0.5 });
+// マテリアルを定義
+const chainMaterial = new THREE.MeshStandardMaterial({
+  color: 0x999999,
+  roughness: 0.5,
+  metalness: 0.5
+});
 
-// 鎖の形状オブジェクトを作成し、シーンに追加する
-const chainLength = 10; // 鎖の長さ
-const curvature = 0.5; // 鎖の曲率
-const angle = Math.PI / 4; // 鎖の角度
-const linkGeometry = new THREE.CylinderGeometry(0.1, 0.1, 1, 16);
+function buildScene() {
+  const chainRadius = 0.5;
+  const chainLength = 2;
+  const chainSegments = 16;
 
-const chain = new THREE.Group(); // 鎖をまとめるグループ
+  const cylinderGeometry = new THREE.CylinderGeometry(chainRadius, chainRadius, chainLength, chainSegments);
 
-for (let i = 0; i < chainLength; i++) {
-// 鎖のリンクのマテリアルを作成
-const linkMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff, metalness: 1, roughness: 0.5 });
+  // 円柱１
+  const topCylinderMesh = new THREE.Mesh(cylinderGeometry, chainMaterial);
+  topCylinderMesh.position.set(0, chainLength / 2, 0);
 
-// リンクの位置と回転を計算
-const link = new THREE.Mesh(linkGeometry, linkMaterial);
-link.position.set((i + 1) * curvature * Math.sin(angle), (i + 1) * curvature * Math.cos(angle), (i + 1) * 2);
-link.rotation.set(angle, 0, Math.PI / 2);
+  // 円柱２
+  const bottomCylinderMesh = new THREE.Mesh(cylinderGeometry, chainMaterial);
+  bottomCylinderMesh.position.set(0, -chainLength / 2, 0);
+  bottomCylinderMesh.rotation.x = Math.PI;
 
-chain.add(link);
+  // カーブ１、カーブ２
+  const curvePoints = [
+    new THREE.Vector3(chainRadius, -chainLength / 2, 0),
+    new THREE.Vector3(chainRadius, -chainLength / 4, 0),
+    new THREE.Vector3(chainRadius * 2, 0, 0)
+  ];
+  const curve1 = new THREE.CatmullRomCurve3(curvePoints);
+  const curve2 = new THREE.CatmullRomCurve3(curvePoints);
+
+  // カーブ１メッシュ
+  const curve1Geometry = new THREE.TubeGeometry(curve1, chainSegments, chainRadius, 8, false);
+  const curve1Mesh = new THREE.Mesh(curve1Geometry, chainMaterial);
+  curve1Mesh.position.set(0, -chainLength / 2, 0);
+
+  // カーブ２メッシュ
+  const curve2Geometry = new THREE.TubeGeometry(curve2, chainSegments, chainRadius, 8, false);
+  const curve2Mesh = new THREE.Mesh(curve2Geometry, chainMaterial);
+  curve2Mesh.position.set(0, chainLength / 2, 0);
+
+  scene.add(topCylinderMesh);
+  scene.add(bottomCylinderMesh);
+  scene.add(curve1Mesh);
+  scene.add(curve2Mesh);
+
+  // 接続
+  const topCurvePoint = curve1.getPoint(1);
+  topCylinderMesh.position.copy(topCurvePoint);
+
+  const bottomCurvePoint = curve2.getPoint(0);
+  bottomCylinderMesh.position.copy(bottomCurvePoint);
 }
 
-scene.add(chain);
+
+
+buildScene();
+
+
+
+// スポットライトを作成
+const spotLight = new THREE.SpotLight(0xffffff, 1);
+spotLight.position.set(5, 10, 5);
+spotLight.angle = Math.PI / 5;
+spotLight.penumbra = 0.5;
+spotLight.decay = 2;
+spotLight.distance = 200;
+scene.add(spotLight);
 
 // レンダリングする
 function render() {
-renderer.render(scene, camera);
-requestAnimationFrame(render); // requestAnimationFrame を使ってアニメーションをスムーズにする
+    renderer.render(scene, camera);
+    spotLight.position.x = Math.sin(Date.now() * 0.001) * 10;
+    spotLight.position.z = Math.cos(Date.now() * 0.001) * 10;
+    requestAnimationFrame(render);
 }
 
-// レンダリングを実行する
+window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
 render();
-
-
-
-// 動くコード
-// var geometry = new THREE.BoxGeometry(1, 1, 1);
-// var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-// var cube = new THREE.Mesh(geometry, material);
-
-// var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-// camera.position.z = 5;
-
-// var scene = new THREE.Scene();
-// scene.add(cube);
-
-// var renderer = new THREE.WebGLRenderer();
-// renderer.setSize(window.innerWidth, window.innerHeight);
-// document.body.appendChild(renderer.domElement);
-
-// function animate() {
-//     requestAnimationFrame(animate);
-
-//     cube.rotation.x += 0.01;
-//     cube.rotation.y += 0.01;
-
-//     renderer.render(scene, camera);
-// }
-// animate();
