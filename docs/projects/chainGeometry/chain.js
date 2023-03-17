@@ -1,7 +1,7 @@
 // シーン、カメラ、レンダラーを作成
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.z = 5;
+camera.position.z = 10;
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -14,19 +14,15 @@ function buildScene() {
   const chainRadius = 0.3;
   const chainLength = 4;
   const chainSegments = 16;
-  const leftCylinderTopX = -2;
-  const cylinderMarginX = 3;
+
   const cylinderTopY = 0;
+  const cylinderMarginX = 3;
 
+  const leftCylinderTopX = -1;
   const rightCylinderTopX = leftCylinderTopX + cylinderMarginX;
-  const cylinderBottomY = cylinderTopY + chainLength;
-  const leftCylinderBottomX = rightCylinderTopX;
-  const rightCylinderBottomX = leftCylinderTopX + cylinderMarginX;
 
+  const topCurveEdgeY = 3;
   const topCurveEdgeX = rightCylinderTopX - (cylinderMarginX / 2);
-  console.log(topCurveEdgeX);
-  // const topCurveEdgeX = 0.3;
-  const topCurveEdgeY = 4;
 
 
   const chainMaterial = new THREE.MeshStandardMaterial({
@@ -64,20 +60,16 @@ function buildScene() {
   const topCurve = new THREE.CatmullRomCurve3(topCurvePoints);
 
   // Bottom curve
-  const bottomCurvePoints = topCurvePoints.slice().reverse();
-  const bottomCurve = new THREE.CatmullRomCurve3(bottomCurvePoints);
-
-  // Rotate top curve 180 degrees
-  topCurve.points.forEach((point) => {
-    point.applyAxisAngle(new THREE.Vector3(0, 1, 0), Math.PI);
-  });
+  const bottomCurve = new THREE.CatmullRomCurve3(topCurvePoints.slice().reverse());
 
   // Tube geometry
+  const numPoints = topCurvePoints.length;
   const geometry = new THREE.TubeGeometry(
     topCurve,
-    topCurvePoints.length * 4,
+    numPoints * 99,
     chainRadius,
     chainSegments,
+    false,
     false
   );
 
@@ -87,28 +79,27 @@ function buildScene() {
   // Bottom curve mesh
   const bottomCurveGeometry = new THREE.TubeGeometry(
     bottomCurve,
-    bottomCurvePoints.length * 4,
+    numPoints * 4,
     chainRadius,
     chainSegments,
-    false
+    false,
+    true // generate bottom cap
   );
   const bottomCurveMesh = new THREE.Mesh(bottomCurveGeometry, chainMaterial);
 
   // Add objects to scene 
-
-  
-  scene.add(leftCylinderMesh, rightCylinderMesh, topCurve, bottomCurveMesh);
+  scene.add(leftCylinderMesh, rightCylinderMesh, mesh, bottomCurveMesh);
 }
 
 buildScene();
 
 // ライティング
 // 環境光
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+const ambientLight = new THREE.AmbientLight(0xffffff, 1);
 scene.add(ambientLight);
 
 // スポットライト
-const spotLight = new THREE.SpotLight(0xffffff, 1);
+const spotLight = new THREE.SpotLight(0xffffff, 0.5);
 spotLight.position.set(5, 10, 5);
 spotLight.angle = Math.PI / 5;
 spotLight.penumbra = 0.5;
@@ -116,7 +107,7 @@ spotLight.decay = 2;
 spotLight.distance = 500;
 scene.add(spotLight);
 
-// レンダリンcグする
+// レンダリングする
 function render() {
 renderer.render(scene, camera);
 const now = Date.now() * 0.001;
