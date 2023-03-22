@@ -1,7 +1,6 @@
-// シーン、カメラ、レンダラーを作成
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.z = 10;
+camera.position.z = 30;
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -9,10 +8,10 @@ renderer.setClearColor(0xffffff, 1);
 document.body.appendChild(renderer.domElement);
 
 
-// シーンを作成
+// Create scene object
 function buildScene() {
   const chainRadius = 0.3;
-  const chainLength = 4;
+  const chainLength = 10;
   const chainSegments = 16;
 
   const cylinderTopY = 0;
@@ -23,7 +22,6 @@ function buildScene() {
 
   const topCurveEdgeY = 3;
   const topCurveEdgeX = rightCylinderTopX - (cylinderMarginX / 2);
-
 
   const chainMaterial = new THREE.MeshStandardMaterial({
     color: 0x999999,
@@ -87,8 +85,16 @@ function buildScene() {
   );
   const bottomCurveMesh = new THREE.Mesh(bottomCurveGeometry, chainMaterial);
 
-  // Add objects to scene 
-  scene.add(leftCylinderMesh, rightCylinderMesh, mesh, bottomCurveMesh);
+  // Create group object
+  const group = new THREE.Group();
+  group.add(leftCylinderMesh, rightCylinderMesh, mesh, bottomCurveMesh);
+
+  // Rotate and position the group object
+  group.rotation.x = Math.PI / 2;
+  group.position.y = -chainLength / 2;
+
+  // Add the group object to the scene
+  scene.add(group);
 }
 
 buildScene();
@@ -109,16 +115,16 @@ scene.add(spotLight);
 
 // レンダリングする
 function render() {
-renderer.render(scene, camera);
-const now = Date.now() * 0.001;
-spotLight.position.set(Math.sin(now) * 10, 10, Math.cos(now) * 10);
-requestAnimationFrame(render);
+  renderer.render(scene, camera);
+  const now = Date.now() * 0.001;
+  spotLight.position.set(Math.sin(now) * 10, 10, Math.cos(now) * 10);
+  requestAnimationFrame(render);
 }
 
 window.addEventListener('resize', () => {
-camera.aspect = window.innerWidth / window.innerHeight;
-camera.updateProjectionMatrix();
-renderer.setSize(window.innerWidth, window.innerHeight);
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
 render();
