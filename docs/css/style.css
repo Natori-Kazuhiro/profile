@@ -1,0 +1,353 @@
+@layer reset, yakuhan, fonts, page, overrides;
+
+@import url('./acab_reset.css') layer(reset);
+@import url("https://cdn.jsdelivr.net/npm/yakuhanjp@3.4.1/dist/css/yakuhanjp.min.css") layer(yakuhan);
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bokor&family=Germania+One&family=Gravitas+One&family=IBM+Plex+Sans:wght@200;400;600&family=Krona+One&family=Noto+Sans+JP:wght@300;400;700&family=Rubik+Mono+One&display=swap') layer(fonts);
+
+/*
+font-family: 'Noto Sans JP' , sans-serif;
+font-family: 'IBM Plex Sans', sans-serif;
+font-family: 'Anton', sans-serif;
+font-family: 'Bokor', cursive;
+font-family: 'Germania One', cursive;
+font-family: 'Gravitas One', cursive;
+font-family: 'Krona One', sans-serif;
+font-family: 'Rubik Mono One', sans-serif; */
+
+
+@layer page{
+    /* general */
+    :root {
+        --color-darkNavy: rgba(22, 27, 34, 1);
+        --color-white: #f3f3f3;
+        --color-teal: #6baf8d;
+        --color-darkGray: #232e33;
+        --font-size-S: 2cqw;
+        --font-size-M: 3cqw;
+        --font-size-L: 5cqw;
+        --font-weight-thin: 100;
+        --font-weight-medium: 300;
+        --font-weight-bold: 600;
+        --font-family-heading: 'Krona One', cursive;
+        --width-inner: min(100%, 960px);
+        --header-height: 100px;
+        --sb-size: 10px;
+        scroll-behavior: smooth;
+        /* ページ内スクロール時の高さ調整 */
+        scroll-padding-top: var(--header-height);
+    }
+
+    body {
+        margin: 0 auto;
+        font-family: YakuHanJP, 'IBM Plex Sans' ,'Noto Sans JP' , sans-serif;
+        font-feature-settings: "palt";
+        color: var(--color-white);
+        background-color: var(--color-darkNavy);
+        scrollbar-color: var(--color-teal) var(--color-darkGray);
+    }
+    /* 効いてないかも */
+    dialog{
+        scrollbar-color: var(--color-teal) 
+        var(--color-darkGray);
+    }
+
+    body::-webkit-scrollbar {
+        width: var(--sb-size);
+    }
+
+    body::-webkit-scrollbar-track {
+        background: var(--color-darkGray);
+        border-radius: 1px;
+    }
+
+    body::-webkit-scrollbar-thumb {
+        background: var(--color-teal);
+        border-radius: 1px;
+    }
+
+    h1,h2,h3,p{
+        width: fit-content;
+    }
+
+    p{
+        line-height: 2;
+        text-align: justify;
+        
+    }
+
+    button {
+        background-color: transparent;
+        border: none;
+        font-size: inherit;
+    }
+
+    header{
+        position: fixed;
+        inset: 0 0 auto;
+        z-index: 3;
+        width: 100%;
+        font-family: var(--font-family-heading);
+        border-bottom: solid 1px var(--color-white);
+        backdrop-filter: blur(0.4cqw);
+        background-color: rgba(22, 27, 34, 0.8);
+    }
+
+    header .headerInner{
+        container-type: inline-size;
+        display: grid;
+        grid-template: 1fr / 1fr max-content;
+        justify-content: center;
+        align-items: center;
+        width: var(--width-inner);
+        height: var(--header-height);
+        margin: auto;
+        font-size: var(--font-size-M);
+    }
+
+    header .headerInner h1{
+        font-size: var(--font-size-M);
+    }
+
+    header .headerInner nav{
+        display: grid;
+        grid-template: 1fr / repeat(3, max-content);
+        grid-column-gap: 1em;
+        font-size: var(--font-size-M);
+    }
+
+    header .headerInner nav > *{
+        color: var(--color-white);
+        text-decoration: underline;
+        text-underline-offset: 0.3ex;
+    }
+
+    #contactDialog{
+        width: 95cqw;
+        height: auto;
+        max-height: 90vh;
+        margin: auto;
+        overflow: hidden;
+    }
+
+    #contactDialog::backdrop{
+        background: rgba(0, 0, 0, 0.7);
+    }
+
+    #contactDialog .contactDialogInner{
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    #contactDialog .contactDialogInner .contactDialogClose{
+        position: absolute;
+        inset: 0 0 auto auto;
+        width: 6em;
+        height: 6em;
+        border: none;
+        padding-top: 3em;
+        font-size: 1cqw;
+        font-family: var(--font-family-heading);
+        background-color: var(--color-darkNavy);
+        border-radius: 10%;
+        cursor: pointer;
+    }
+
+    #contactDialog .contactDialogInner .contactDialogClose span,
+    #contactDialog .contactDialogInner .contactDialogClose span::after{
+        content: "";
+        position: absolute;
+        inset: 0;
+        width: 2.5em;
+        height: 1px;
+        background-color: var(--color-white);
+    }
+
+    #contactDialog .contactDialogInner .contactDialogClose span {
+        inset: 2em 1.7em auto auto;
+        transform: rotate(45deg);
+    }
+
+    #contactDialog .contactDialogInner .contactDialogClose span::after {
+        /* inset:  auto auto 1em 1em; */
+        transform: rotate(-95deg);
+    }
+
+    #contactDialog #contactDialogIframe{
+        width: 100%;
+    }
+
+    main{
+        container-type: inline-size;
+        width: var(--width-inner);
+        margin: auto;
+        padding-top: var(--header-height);
+    }
+
+    main .contactDialogOpen{
+        padding: 0.5em;
+        font-size: var(--font-size-L);
+        font-family: var(--font-family-heading);
+        color: var(--color-darkNavy);
+        background-color: var(--color-white);
+    }
+
+    main .contactDialogOpen:hover{
+        opacity: 0.5;
+    }
+
+    /* navからのスクロール調整 */
+    section:is(#about,#projects){
+        scroll-margin-top: 5cqw;
+    }
+
+    section{
+        container-type: inline-size;
+        width: 100%;
+        margin-bottom: 20cqw;
+    }
+
+    section h2{
+        margin-bottom: 1em;
+        font-size: var(--font-size-L);
+        font-family: var(--font-family-heading);
+    }
+
+    section h3{
+        margin-bottom: 0.5em;
+        font-size: var(--font-size-M);
+        font-family: var(--font-family-heading);
+    }
+
+    section p{
+        font-size: var(--font-size-S);
+    }
+
+    /* unique */
+    #fv{
+        margin-top: 10cqw;
+    }
+
+    #fv h1{
+        font-size: 100px;
+        margin-bottom: 1em;
+    }
+
+    #about .skills{
+        display: grid;
+        grid-template: 1fr / repeat(3, 1fr);
+    }
+
+    #about .skill h3{
+        margin-bottom: 0.5em;
+    }
+
+    #about .skill ul{
+        margin-bottom: 3em;
+        font-size: var(--font-size-S);
+        line-height: 1.7;
+    }
+
+    #projects .projectItems{
+        display: grid;
+        grid-template: 1fr 1fr / 1fr;
+        grid-column-gap: 5em;
+        font-size: var(--font-size-S);
+    }
+
+    #projects .projectItems .projectItemInfo{
+        margin-bottom: 1em;
+    }
+
+    #projects .projectItems .projectItemInfo > p{
+        font-size: 1.3em;
+    }
+
+    #projects .projectItem{
+        margin-bottom: 6em;
+    }
+
+    #projects .projectImage{
+        margin-bottom: 5%;
+    }
+
+    #contact__form iframe{
+        width: 100%;
+        /* 高さが可変しないのでひとまず固定値を与える */
+        /* height: 1000px; */
+    }
+
+    #contact__form iframe body > div > div{
+        width: 100%;
+    }
+
+    @media (width <= 960px) {
+        :root {
+            --font-size-S: 4cqw;
+            --font-size-M: 7cqw;
+            --font-size-L: 9cqw;
+            --header-height: 18vw;
+        }
+
+        body {
+            margin: auto 5%;
+        }
+
+        header{
+            inset: auto 0 0;
+            border-top: solid 1px var(--color-white);
+            border-bottom: none;
+        }
+
+        header .headerInner{
+            grid-template: 1fr 1fr / 1fr;
+            width: 90%;
+        }
+
+        header .headerInner h1{
+            margin-top: 0.5em;
+            font-size: var(--font-size-S);
+        }
+
+        header .headerInner nav > * {
+            margin-bottom: 0.4em;
+            font-size: 6cqw;
+        }
+
+        main{
+            padding: 0 0 var(--header-height);
+        }
+
+        section{
+            margin-bottom: 20cqw;
+        }
+
+        #fv h1{
+            font-size: 15vw;
+            margin-bottom: 1em;
+        }
+
+        #about .skills{
+            grid-template: repeat(2, max-content) / 1fr  1fr;
+        }
+
+        #projects .projectItems{
+            grid-template: repeat(2, max-content) / 1fr;
+        }
+
+        #contact__form iframe{
+            /* 高さが可変しないのでひとまず固定値を与える */
+            /* height: 140cqw; */
+        }
+
+
+    }
+
+}
+/* /page */
+
+/* @layer overrides{
+
+} */
+
+
