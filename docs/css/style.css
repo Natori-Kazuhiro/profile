@@ -281,7 +281,8 @@ font-family: 'Rubik Mono One', sans-serif; */
         width: 100%;
     }
 
-    @media (width <= 960px) {
+    @media (max-width: 960px) {
+    /* @media (width <= 960px) { */
         :root {
             --font-size-S: 4cqw;
             --font-size-M: 7cqw;
