@@ -7,7 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>profile</title>
 
-  <script src="https://cdn.jsdelivr.net/npm/container-query-polyfill@1/dist/container-query-polyfill.modern.js"></script>
+  <script type="module">
+    if (!("container" in document.documentElement.style)) {
+        import("https://unpkg.com/container-query-polyfill@^0.2.0");
+    }
+  </script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/container-query-polyfill@1/dist/container-query-polyfill.modern.js"></script> -->
   <link rel="preload" href="./css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <!-- https://bnthor.github.io/animon-site/ -->
   <link rel="stylesheet" href="https://unpkg.com/animon@1.0.1/dist/animon.css"/>
@@ -23,7 +28,7 @@
         <a href="#about">about</a>
         <a href="#projects">projects</a>
         <button class="js-contactDialogOpen">contact</button>
-      </nav>
+    </nav>
     </div>
   </header>
 
