@@ -1,6 +1,6 @@
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.z = 30;
+camera.position.z = 10;
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -9,6 +9,81 @@ document.body.appendChild(renderer.domElement);
 
 
 // Create scene object
+// function buildScene() {
+//   const chainRadius = 0.3;
+//   const chainLength = 10;
+//   const chainSegments = 16;
+
+//   const cylinderTopY = 0;
+//   const cylinderMarginX = 3;
+
+//   const leftCylinderTopX = -1;
+//   const rightCylinderTopX = leftCylinderTopX + cylinderMarginX;
+
+//   const topCurveEdgeY = 3;
+//   const topCurveEdgeX = rightCylinderTopX - (cylinderMarginX / 2);
+
+//   const chainMaterial = new THREE.MeshStandardMaterial({
+//     color: 0x999999,
+//     roughness: 0.5,
+//     metalness: 0.8
+//   });
+
+//   const cylinderGeometry = new THREE.CylinderGeometry(
+//     chainRadius,
+//     chainRadius,
+//     chainLength,
+//     chainSegments
+//   );
+
+//   // Left cylinder
+//   const leftCylinderMesh = new THREE.Mesh(cylinderGeometry, chainMaterial);
+//   leftCylinderMesh.position.set(leftCylinderTopX, cylinderTopY - chainLength / 2, 0);
+
+//   // Right cylinder
+//   const rightCylinderMesh = new THREE.Mesh(cylinderGeometry, chainMaterial);
+//   rightCylinderMesh.position.set(rightCylinderTopX, cylinderTopY - chainLength / 2, 0);
+
+//   // Top curve
+//   const curveRadius = chainRadius * 2;
+//   const curveSegments = 32;
+//   const topCurve = new THREE.CircleGeometry(curveRadius, curveSegments, 0, Math.PI);
+
+//   // Bottom curve
+//   const bottomCurve = new THREE.CircleGeometry(curveRadius, curveSegments, 0, Math.PI);
+//   bottomCurve.rotateX(Math.PI);
+
+//   // Tube geometry
+//   const tubePath = new THREE.CurvePath();
+//   tubePath.add(new THREE.LineCurve3(new THREE.Vector3(leftCylinderTopX, cylinderTopY, 0), new THREE.Vector3(rightCylinderTopX, cylinderTopY, 0)));
+
+//   const tubeGeometry = new THREE.TubeGeometry(
+//     tubePath,
+//     1,
+//     chainRadius,
+//     chainSegments,
+//     false
+//   );
+//   const curveSegmentsLength = topCurve.vertices.length;
+//   const numSegments = Math.floor(tubeGeometry.parameters.path.getLength() / curveSegmentsLength);
+//   for (let i = 0; i < numSegments; i++) {
+//     tubePath.add(new THREE.LineCurve3(topCurve.vertices[i], bottomCurve.vertices[i]));
+//   }
+
+//   // Tube mesh
+//   const mesh = new THREE.Mesh(tubeGeometry, chainMaterial);
+
+//   // Create group object
+//   const group = new THREE.Group();
+//   group.add(leftCylinderMesh, rightCylinderMesh, mesh);
+
+//   // Rotate and position the group object
+//   group.rotation.x = Math.PI / 2;
+//   group.position.y = -chainLength / 2;
+
+//   // Add the group object to the scene
+//   scene.add(group);
+// }
 function buildScene() {
   const chainRadius = 0.3;
   const chainLength = 10;
@@ -27,7 +102,7 @@ function buildScene() {
     color: 0x999999,
     roughness: 0.5,
     metalness: 0.8
-  }); 
+  });
 
   const cylinderGeometry = new THREE.CylinderGeometry(
     chainRadius,
@@ -38,56 +113,44 @@ function buildScene() {
 
   // Left cylinder
   const leftCylinderMesh = new THREE.Mesh(cylinderGeometry, chainMaterial);
-  leftCylinderMesh.position.set(leftCylinderTopX, cylinderTopY, 0);
+  leftCylinderMesh.position.set(leftCylinderTopX, cylinderTopY - chainLength / 2, 0);
 
   // Right cylinder
   const rightCylinderMesh = new THREE.Mesh(cylinderGeometry, chainMaterial);
-  rightCylinderMesh.position.set(rightCylinderTopX, cylinderTopY, 0);
-
-  // Top curve start and end points
-  const topCurveStart = new THREE.Vector3(leftCylinderTopX, cylinderTopY, 0);
-  const topCurveEdge = new THREE.Vector3(topCurveEdgeX, topCurveEdgeY, 0);
-  const topCurveEnd = new THREE.Vector3(rightCylinderTopX, cylinderTopY, 0);
+  rightCylinderMesh.position.set(rightCylinderTopX, cylinderTopY - chainLength / 2, 0);
 
   // Top curve
-  const topCurvePoints = [
-    topCurveStart,
-    topCurveEdge,
-    topCurveEnd
-  ];
-  const topCurve = new THREE.CatmullRomCurve3(topCurvePoints);
+  const curveRadius = chainRadius * 2;
+  const curveSegments = 32;
+  const topCurve = new THREE.CircleGeometry(curveRadius, curveSegments, 0, Math.PI);
 
   // Bottom curve
-  const bottomCurve = new THREE.CatmullRomCurve3(topCurvePoints.slice().reverse());
+  const bottomCurve = new THREE.CircleGeometry(curveRadius, curveSegments, 0, Math.PI);
+  bottomCurve.rotateX(Math.PI);
 
   // Tube geometry
-  const numPoints = topCurvePoints.length;
-  const geometry = new THREE.TubeGeometry(
-    topCurve,
-    numPoints * 99,
+  const tubePath = new THREE.CurvePath();
+  tubePath.add(new THREE.LineCurve3(new THREE.Vector3(leftCylinderTopX, cylinderTopY, 0), new THREE.Vector3(rightCylinderTopX, cylinderTopY, 0)));
+
+  const tubeGeometry = new THREE.TubeGeometry(
+    tubePath,
+    1,
     chainRadius,
     chainSegments,
-    false,
     false
   );
+  const curveSegmentsLength = topCurve.vertices.length;
+  const numSegments = Math.floor(tubeGeometry.parameters.path.getLength() / curveSegmentsLength);
+  for (let i = 0; i < numSegments; i++) {
+    tubePath.add(new THREE.LineCurve3(topCurve.vertices[i], bottomCurve.vertices[i]));
+  }
 
   // Tube mesh
-  const mesh = new THREE.Mesh(geometry, chainMaterial);
-
-  // Bottom curve mesh
-  const bottomCurveGeometry = new THREE.TubeGeometry(
-    bottomCurve,
-    numPoints * 4,
-    chainRadius,
-    chainSegments,
-    false,
-    true // generate bottom cap
-  );
-  const bottomCurveMesh = new THREE.Mesh(bottomCurveGeometry, chainMaterial);
+  const mesh = new THREE.Mesh(tubeGeometry, chainMaterial);
 
   // Create group object
   const group = new THREE.Group();
-  group.add(leftCylinderMesh, rightCylinderMesh, mesh, bottomCurveMesh);
+  group.add(leftCylinderMesh, rightCylinderMesh, mesh);
 
   // Rotate and position the group object
   group.rotation.x = Math.PI / 2;
@@ -97,7 +160,6 @@ function buildScene() {
   scene.add(group);
 }
 
-buildScene();
 
 // ライティング
 // 環境光
@@ -121,6 +183,7 @@ function render() {
   requestAnimationFrame(render);
 }
 
+// リサイズする
 window.addEventListener('resize', () => {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
