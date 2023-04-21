@@ -24,12 +24,15 @@
     <div class="headerInner">
       <h1>Kazuhiro Natori</h1>
       <nav>
-        <a href="#about">about</a>
+        <a href="#skills">skills</a>
         <a href="#projects">projects</a>
         <button class="js-contactDialogOpen">contact</button>
     </nav>
     </div>
   </header>
+
+  <!-- 固定の円 -->
+  <p id="fixedCircle"></p>
 
   <main>
 
@@ -42,10 +45,6 @@
     </dialog>
 
     <section id="fv">
-      <!-- キャッチーなヒーローイメージ -->
-      <!-- <picture>
-        <img src="" alt="" decording="async">
-      </picture> -->
       <h1>
         <span  class="animonItem" data-effect="fadeIn" data-delay="300">Kazuhiro Natori</span><br>
         <span  class="animonItem" data-effect="fadeIn" data-delay="500">markup engineer</span>
@@ -53,9 +52,9 @@
       <button class="contactDialogOpen js-contactDialogOpen">contact</button>
     </section>
 
-    <section id="about" class="animonItem" data-effect="fadeIn">
-      <h2>about</h2>
-      <div class="skills">
+    <section id="skills" class="animonItem" data-effect="fadeIn">
+      <h2>skills</h2>
+      <div class="skillWrap">
         <div class="skill">
           <h3>web</h3>
           <ul>
@@ -93,22 +92,22 @@
           </ul>
         </div>
       </div>
-      <h3>detail</h3>
+      <h3>details</h3>
       <p>
         web―コーダー・マークアップエンジニア<br>
         HTML、CSS、JavaScriptなどを使用したコーディング、各種デバイスやクロスブラウザーの対応、レスポンシブWebデザインやアクセシビリティに関する知識があります。<br>
         その他にも、バージョン管理システムを使用したコード管理などのデータ管理、チーム内のナレッジ管理やルール制定、テンプレートエンジンなどを使用したマークアップの効率化を行ってきました。<br>
-        AIの使用による制作の効率化にも関心があり、このサイトの制作にもChatGPTや画像の生成サイトを利用しています。
+        AIの使用による制作の効率化にも関心があり、ChatGPTなどのAIを活用しています。
       </p>
       <br>
       <p>
-        design―グラフィックデザイン<br>
+        design―グラフィックデザイナー<br>
         Illustratorなどを使用して、WebやDTP、プロダクト用のグラフィックデザインを制作する事が出来ます。<br>
         ミニマルなデザインや精密な文字組みが得意です。
       </p>
       <br>
       <p>
-        movie―動画撮影<br>
+        movie―動画カメラマン<br>
         XDCAMなどの業務用カメラでのスタジオ撮影、報道・ENG撮影と映像編集が可能です。<br>
         放送局での放映可能なクオリティで撮影を行う事が出来ます。<br>
       </p>
@@ -256,6 +255,7 @@
       Animon.animon();
   </script>
   <script src="./js/contactModal.js" defer></script>
+  <script src="./js/fixedCircleVisibility.js" defer></script>
 
 </body>
 
