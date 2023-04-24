@@ -25,6 +25,8 @@ font-family: 'Krona One', sans-serif;
         --font-weight-medium: 300;
         --font-weight-bold: 600;
         --font-family-heading: 'Krona One', 'Noto Sans JP', cursive;
+        /* cursiveにfont-feature-settingsが効かないので調整 */
+        --letter-spacing-heading: -0.04em;
         --width-inner: min(100%, 960px);
         --header-height: 100px;
         --scrollbar-size: 10px;
@@ -90,6 +92,7 @@ font-family: 'Krona One', sans-serif;
         z-index: 3;
         width: 100%;
         font-family: var(--font-family-heading);
+        letter-spacing: var(--letter-spacing-heading);
         border-bottom: solid 1px var(--color-white);
         backdrop-filter: blur(0.4cqw);
         background-color: rgba(22, 27, 34, 0.8);
@@ -151,6 +154,7 @@ font-family: 'Krona One', sans-serif;
         padding-top: 3em;
         font-size: 1cqw;
         font-family: var(--font-family-heading);
+        letter-spacing: var(--letter-spacing-heading);
         background-color: var(--color-darkNavy);
         border-radius: 10%;
         cursor: pointer;
@@ -191,6 +195,7 @@ font-family: 'Krona One', sans-serif;
         padding: 0.5em;
         font-size: var(--font-size-L);
         font-family: var(--font-family-heading);
+        letter-spacing: var(--letter-spacing-heading);
         color: var(--color-darkNavy);
         background-color: var(--color-white);
     }
@@ -214,6 +219,7 @@ font-family: 'Krona One', sans-serif;
         margin-bottom: 1em;
         font-size: var(--font-size-L);
         font-family: var(--font-family-heading);
+        letter-spacing: var(--letter-spacing-heading);
     }
 
     section h3{
@@ -221,6 +227,7 @@ font-family: 'Krona One', sans-serif;
         font-size: var(--font-size-M);
         line-height: 1.7;
         font-family: var(--font-family-heading);
+        letter-spacing: var(--letter-spacing-heading);
     }
 
     section p{
@@ -257,6 +264,7 @@ font-family: 'Krona One', sans-serif;
         margin-bottom: 1em;
         font-size: 100px;
         font-family: var(--font-family-heading);
+        letter-spacing: var(--letter-spacing-heading);
     }
 
     #fv h1 span:nth-child(1){
