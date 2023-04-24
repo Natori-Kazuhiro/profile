@@ -5,16 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>profile</title>
-
-  <script type="module">
-    if (!("container" in document.documentElement.style)) {
-        import("https://unpkg.com/container-query-polyfill@^0.2.0");
-    }
-  </script>
   <link rel="preload" href="./css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-  <!-- https://bnthor.github.io/animon-site/ -->
-  <link rel="stylesheet" href="https://unpkg.com/animon@1.0.1/dist/animon.css"/>
-
 </head>
 
 <body>
@@ -45,13 +36,13 @@
 
     <section id="fv">
       <h1>
-        <span  class="animonItem" data-effect="fadeIn" data-delay="300">Kazuhiro Natori</span><br>
-        <span  class="animonItem" data-effect="fadeIn" data-delay="600">―markup engineer</span>
+        <span class="delayedItem" data-delay="500">Kazuhiro Natori</span><br>
+        <span class="delayedItem" data-delay="1000">―markup engineer</span>
       </h1>
       <button class="contactDialogOpen js-contactDialogOpen">contact</button>
     </section>
 
-    <section id="skills" class="animonItem" data-effect="fadeIn">
+    <section id="skills" class="delayedItem">
       <h2>skills</h2>
       <div class="skillWrap">
         <div class="skill">
@@ -112,7 +103,7 @@
       </p>
     </section>
 
-    <section id="projects" class="animonItem" data-effect="fadeIn">
+    <section id="projects" class="delayedItem">
       <h2>projects</h2>
       <div class="projectItems">
         <div class="projectItem">
@@ -247,14 +238,14 @@
 
   </main>
 
-
-  <!-- https://bnthor.github.io/animon-site/ -->
-  <script src="https://unpkg.com/animon@1.0.1/dist/animon.iife.js"></script>
-  <script>
-      Animon.animon();
+  <script type="module" defer>
+    if (!("container" in document.documentElement.style)) {
+        import("https://unpkg.com/container-query-polyfill@^0.2.0");
+    }
   </script>
   <script src="./js/contactModal.js" defer></script>
   <script src="./js/fixedCircleVisibility.js" defer></script>
+  <script src="./js/delayedVisibility.js" defer></script>
 
 </body>
 
