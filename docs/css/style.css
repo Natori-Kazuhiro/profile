@@ -348,6 +348,26 @@ font-family: 'Krona One', sans-serif;
             --header-height: 18vw;
         }
 
+        #contactDialog{
+            width: 100%;
+        }
+
+        #contactDialog .contactDialogInner .contactDialogClose{
+            inset: 0 0 auto auto;
+            width: 10vw;
+            height: 10vw;
+            padding-top: 8%;
+        }
+    
+        #contactDialog .contactDialogInner .contactDialogClose span,
+        #contactDialog .contactDialogInner .contactDialogClose span::after{
+            width: 7vw;
+        }
+    
+        #contactDialog .contactDialogInner .contactDialogClose span {
+            inset: 43% 16% auto auto;
+        }
+
         main .contactDialogOpen {
             width: 100%;
         }
