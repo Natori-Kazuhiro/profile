@@ -10,7 +10,6 @@ font-family: 'IBM Plex Sans', sans-serif;
 font-family: 'Krona One', sans-serif;
 */
 
-
 @layer page{
     /* general */
     :root {
@@ -183,8 +182,7 @@ font-family: 'Krona One', sans-serif;
         width: 100%;
     }
 
-    /* 遅延表示の実装 */
-
+    /* 遅延表示 クラスはdelayedVisibility.jsで操作*/
     .delayedItem {
         opacity: 0;
         will-change: opacity
@@ -195,16 +193,13 @@ font-family: 'Krona One', sans-serif;
         transition: 0.5s;
     }
 
-    .delayedItem.isVisible[data-delay="100"]{
-        transition-delay: 100ms;
+    .delayedItem.isVisible[data-delay="500"]{
+        transition-delay: 500ms;
     }
 
-    .delayedItem.isVisible[data-delay="150"]{
-        transition-delay: 150ms;
+    .delayedItem.isVisible[data-delay="1000"]{
+        transition-delay: 1000ms;
     }
-
-
-    /*  */
 
     main{
         container-type: inline-size;
@@ -427,10 +422,3 @@ font-family: 'Krona One', sans-serif;
     }
 
 }
-/* /page */
-
-/* @layer overrides{
-
-} */
-
-
