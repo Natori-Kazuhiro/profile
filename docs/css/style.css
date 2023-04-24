@@ -183,6 +183,29 @@ font-family: 'Krona One', sans-serif;
         width: 100%;
     }
 
+    /* 遅延表示の実装 */
+
+    .delayedItem {
+        opacity: 0;
+        will-change: opacity
+    }
+    
+    .delayedItem.isVisible {
+        opacity: 1;
+        transition: 0.5s;
+    }
+
+    .delayedItem.isVisible[data-delay="100"]{
+        transition-delay: 100ms;
+    }
+
+    .delayedItem.isVisible[data-delay="150"]{
+        transition-delay: 150ms;
+    }
+
+
+    /*  */
+
     main{
         container-type: inline-size;
         width: var(--width-inner);
