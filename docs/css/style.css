@@ -210,17 +210,20 @@ font-family: 'Krona One', sans-serif;
     }
 
     main .contactDialogOpen{
-        width: 40%;
+        width: 50%;
         padding: 0.5em;
         font-size: var(--font-size-L);
         font-family: var(--font-family-heading);
         letter-spacing: var(--letter-spacing-heading);
         color: var(--color-darkNavy);
         background-color: var(--color-white);
+        transition-duration: 0.5s;
     }
 
     main .contactDialogOpen:hover{
-        opacity: 0.5;
+        color: var(--color-white);
+        background-color: var(--color-teal);
+        opacity: 0.9;
     }
 
     /* navからのスクロール調整 */
@@ -327,7 +330,17 @@ font-family: 'Krona One', sans-serif;
 
     #projects .projectImage{
         margin-bottom: 5%;
+        overflow: hidden;
     }
+
+    #projects .projectImage img{
+        transition: transform 0.5s ease;
+    }
+
+    #projects .projectImage:hover img{
+        transform: scale(1.1);
+    }
+
 
     #contact__form iframe{
         width: 100%;
@@ -401,7 +414,7 @@ font-family: 'Krona One', sans-serif;
             margin-bottom: 0.4em;
             font-size: 6cqw;
         }
-
+        /* ヘッダーが下部に固定されるため */
         main{
             padding: 0 0 var(--header-height);
         }
