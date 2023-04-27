@@ -1,3 +1,4 @@
+// contactフォームの開閉に関わるfunction
 const contactDialog = document.getElementById('contactDialog');
 const body = document.body;
 const contactDialogOpenNodes = document.querySelectorAll('.js-contactDialogOpen');
