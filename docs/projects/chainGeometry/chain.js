@@ -19,17 +19,17 @@ scene.add(light);
 const createChainLink = () => {
   const path = new THREE.CatmullRomCurve3([
     new THREE.Vector3(    0,     0,   0),
-    new THREE.Vector3(    0,   0.7,   0),
-    new THREE.Vector3(    0,     1,   0),
-    new THREE.Vector3(  0.5,  1.25,   0),
-    new THREE.Vector3(    1,     1,   0),
-    new THREE.Vector3(    1,   0.7,   0),
+    new THREE.Vector3(  0.7,     0,   0),
     new THREE.Vector3(    1,     0,   0),
-    new THREE.Vector3(    1,  -0.7,   0),
-    new THREE.Vector3(    1,    -1,   0),
-    new THREE.Vector3(  0.5, -1.25,   0),
-    new THREE.Vector3(    0,    -1,   0),
-    new THREE.Vector3(    0,  -0.7,   0),
+    new THREE.Vector3( 1.25,   0.5,   0),
+    new THREE.Vector3(    1,     1,   0),
+    new THREE.Vector3(  0.7,     1,   0),
+    new THREE.Vector3(    0,     1,   0),
+    new THREE.Vector3( -0.7,     1,   0),
+    new THREE.Vector3(   -1,     1,   0),
+    new THREE.Vector3(-1.25,   0.5,   0),
+    new THREE.Vector3(   -1,     0,   0),
+    new THREE.Vector3( -0.7,     0,   0),
     new THREE.Vector3(    0,     0,   0)
   ]);
 
@@ -42,22 +42,22 @@ const createChainLink = () => {
 // 鎖のリンクを配置し、回転を設定
 const numLinks = 10;
 const chainLinks = [];
-const linkSize = 5;
+const linkSize = 10;
 const linkDistance = linkSize / numLinks;
-const rotationyCenter = new THREE.Vector3(0, 0, 0); // y軸の中心
 
 for (let i = 0; i < numLinks; i++) {
   const link = createChainLink();
-  const yOffset = i * linkDistance;
+  const yOffset = i * linkDistance * 2;
 
-  const linkPositionX = 0.5 - linkSize / 2;
+  const linkPositionX = 0;
   link.position.set(linkPositionX, yOffset, 0);
-  link.rotation.z = Math.PI / 2; // z軸を中心に回転
 
-  const rotationyAngle = (i + 1) * Math.PI / 2; // y軸を中心に回転する角度
-  link.rotation.y = rotationyAngle;
-  const offsety = new THREE.Vector3(0, yOffset - linkSize / 2, 0); // y方向のオフセットを作成
-  link.position.add(offsety); // オフセットを適用
+  if (i % 2 === 0) {
+    link.rotation.z = Math.PI / 2; // 偶数リンクのZ軸回転を設定
+  } else {
+    link.rotation.y = Math.PI / 2; // 奇数リンクのY軸回転を設定
+    link.rotation.z = Math.PI / 2; // 追加：奇数リンクのZ軸回転を設定
+  }
 
   scene.add(link);
   chainLinks.push(link);
