@@ -15,9 +15,17 @@ document.body.appendChild(renderer.domElement);
 const ambientLight = new THREE.AmbientLight(0x333333);
 scene.add(ambientLight);
 
-// 部屋のような点光源
-const pointLight = new THREE.PointLight(0xffffff, 200, 60);
-scene.add(pointLight);
+// 各点光源の設定
+const pointLight1 = new THREE.PointLight(0xffffff, 1.5, 60);
+const pointLight2 = new THREE.PointLight(0xffffff, 1.5, 60);
+
+// 2つの点光源を鎖の周りに配置
+pointLight1.position.set(50, 100, 20);
+pointLight2.position.set(-10, 50, 20);
+
+// シーンに点光源を追加
+scene.add(pointLight1);
+scene.add(pointLight2);
 
 const createChainLink = () => {
   const path = new THREE.CatmullRomCurve3([
@@ -38,10 +46,10 @@ const createChainLink = () => {
 
   const geometry = new THREE.TubeGeometry(path, 64, 0.2, 8, false);
   const material = new THREE.MeshPhongMaterial({
-    color: 0xaaaaaa,
-    metalness: 1.0,
-    roughness: 0.5,
-    emissive: 0x111111,
+    color: 0x555555,
+    metalness: 0.9,
+    roughness: 0.3,
+    emissive: 0x111111
   });
 
   return new THREE.Mesh(geometry, material);
@@ -65,8 +73,6 @@ for (let i = 0; i < numLinks; i++) {
   // 偶数の場合の処理
   if (i % 2 === 0) {
     link.rotation.y = Math.PI / 2;
-
-    // Adjust link's position
     link.position.x = -0.5;
     link.position.z = -0.5;
   }
@@ -78,9 +84,8 @@ for (let i = 0; i < numLinks; i++) {
 function animate() {
   requestAnimationFrame(animate);
 
-  // Update camera rotation around Y-axis
-  camera.position.x = 30 * Math.sin(Date.now() * 0.001);
-  camera.position.z = 30 * Math.cos(Date.now() * 0.001);
+  // カメラを回転させるアニメーション
+  camera.position.x = 10 * Math.sin(Date.now() * 0.001);
   camera.lookAt(scene.position);
 
   renderer.render(scene, camera);
