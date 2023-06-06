@@ -49,14 +49,14 @@ for (let i = 0; i < numLinks; i++) {
   const link = createChainLink();
   const yOffset = i * linkDistance * 2;
 
-  const linkPositionX = 0;
+  const linkPositionX = i % 2 === 0 ? 0 : -0.5;
   link.position.set(linkPositionX, yOffset, 0);
 
   if (i % 2 === 0) {
-    link.rotation.z = Math.PI / 2; // 偶数リンクのZ軸回転を設定
+    link.rotation.z = Math.PI / 2;
   } else {
-    link.rotation.y = Math.PI / 2; // 奇数リンクのY軸回転を設定
-    link.rotation.z = Math.PI / 2; // 追加：奇数リンクのZ軸回転を設定
+    link.rotation.y = Math.PI / 2;
+    link.rotation.z = Math.PI / 2;
   }
 
   scene.add(link);
