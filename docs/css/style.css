@@ -126,6 +126,11 @@ font-family: 'Krona One', sans-serif;
         text-underline-offset: 0.3ex;
     }
 
+    .contactOffer{
+        font-size: 5cqw;
+        margin-bottom: 1em;
+    }
+
     #contactDialog{
         width: 95cqw;
         height: auto;
