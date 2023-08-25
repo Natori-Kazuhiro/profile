@@ -24,7 +24,7 @@
         background-color: rgba(22, 27, 34, 0.8);
     }
     header .headerInner{
-        /* container-type: inline-size; */
+        container-type: inline-size;
         display: grid;
         grid-template: 1fr / 1fr max-content;
         justify-content: center;

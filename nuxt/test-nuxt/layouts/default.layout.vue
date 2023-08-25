@@ -1,7 +1,9 @@
 <template>
-    <Nav /> <!-- 共通のナビゲーションコンポーネント -->
+    <!-- 共通のナビゲーションコンポーネント -->
+    <Nav />
     <main>
-        <slot /> <!-- 各ページのコンテンツを表示する場所 -->
+        <!-- 各ページのコンテンツを表示する -->
+        <slot /> 
     </main>
 </template>
 
@@ -91,4 +93,65 @@
         border: none;
         font-size: inherit;
     }
+
+        /* 遅延表示 クラスはdelayedVisibility.jsで操作*/
+    /* .delayedItem {
+        opacity: 0;
+        will-change: opacity
+    }
+    
+    .delayedItem.isVisible {
+        opacity: 1;
+        transition: 0.5s;
+    } */
+
+    /* .delayedItem.isVisible[data-delay="500"]{
+        transition-delay: 500ms;
+    }
+
+    .delayedItem.isVisible[data-delay="1000"]{
+        transition-delay: 1000ms;
+    } */
+
+    main{
+        container-type: inline-size;
+        width: var(--width-inner);
+        margin: auto;
+        /* ヘッダーの高さ分ずらす */
+        padding-top: var(--header-height);
+    }
+
+    main .contactDialogOpen{
+        width: 50%;
+        padding: 0.5em;
+        font-size: var(--font-size-L);
+        font-family: var(--font-family-heading);
+        letter-spacing: var(--letter-spacing-heading);
+        color: var(--color-darkNavy);
+        background-color: var(--color-white);
+        transition-duration: 0.5s;
+    }
+
+    main .contactDialogOpen:hover{
+        color: var(--color-white);
+        background-color: var(--color-teal);
+        opacity: 0.9;
+    }
+
+    @media (width <= 960px) {
+        /* ヘッダーが下部に固定されるため */
+        main{
+            padding: 0 0 var(--header-height);
+        }
+
+        section{
+            margin-bottom: 20cqw;
+        }
+
+        /* navからのスクロール調整 */
+        section:is(#skills,#projects){
+            scroll-margin-top: -10cqw;
+        }
+    }
+
 </style>

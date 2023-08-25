@@ -6,7 +6,7 @@
                 <a class="projectItemLink" href="https://toricowear.myshopify.com/" target="_blank" rel="noopener">
                     <h3>虜</h3>
                     <p class="projectImage">
-                        <img src="/img/projects_image_torico.webp" decording="async" loading="lazy" alt="イメージ画像" width="1901" height="931" />
+                        <img src="~/assets//img/projects_image_torico.webp" decording="async" loading="lazy" alt="イメージ画像" width="1901" height="931" />
                     </p>
                 </a>
                 <div class="projectItemInfo">
@@ -23,7 +23,7 @@
                 <a class="projectItemLink" href="https://lp.moeplus.site/" target="_blank" rel="noopener">
                     <h3>moeplus</h3>
                     <p class="projectImage">
-                        <img src="/img/projects_image_moeplus.webp" decording="async" loading="lazy" alt="イメージ画像" width="1901" height="931" />
+                        <img src="~/assets//img/projects_image_moeplus.webp" decording="async" loading="lazy" alt="イメージ画像" width="1901" height="931" />
                     </p>
                 </a>
                 <div class="projectItemInfo">
@@ -42,7 +42,7 @@
                 <a href="./projects/chainGeometry/" target="_blank" rel="noopener">
                     <h3>Three.jsの鎖</h3>
                     <p class="projectImage">
-                        <img src="/img/projects_image_chainGeometry.webp" decording="async" loading="lazy" alt="イメージ画像" />
+                        <img src="~/assets//img/projects_image_chainGeometry.webp" decording="async" loading="lazy" alt="イメージ画像" />
                     </p>
                 </a>
                 <div class="projectItemInfo">
@@ -60,7 +60,7 @@
                 <a class="projectItemLink" href="./projects/scrapingAlt/" target="_blank" rel="noopener">
                     <h3>画像から日本語テキストを抽出するページ</h3>
                     <p class="projectImage">
-                        <img src="/img/projects_image_scrapingAlt.webp" decording="async" loading="lazy" alt="イメージ画像" width="1918" height="931" />
+                        <img src="~/assets//img/projects_image_scrapingAlt.webp" decording="async" loading="lazy" alt="イメージ画像" width="1918" height="931" />
                     </p>
                 </a>
                 <div class="projectItemInfo">
@@ -79,7 +79,7 @@
                 <a class="projectItemLink" href="https://moribus.jp/service/casting/" target="_blank" rel="noopener">
                     <h3>Moribus</h3>
                     <p class="projectImage">
-                        <img src="/img/projects_image_moribus.webp" decording="async" loading="lazy" alt="moribus" width="1918" height="931" />
+                        <img src="~/assets//img/projects_image_moribus.webp" decording="async" loading="lazy" alt="moribus" width="1918" height="931" />
                     </p>
                 </a>
                 <div class="projectItemInfo">
@@ -95,7 +95,7 @@
                 <a class="projectItemLink" href="https://needle-biyou.com/lporder/002/nc-056S7DO3BGG/" target="_blank" rel="noopener">
                     <h3>ヤーマン/ニードルリフトクリーム</h3>
                     <p class="projectImage">
-                        <img src="/img/projects_image_yaman.webp" decording="async" loading="lazy" alt="イメージ画像" width="1901" height="931" />
+                        <img src="~/assets//img/projects_image_yaman.webp" decording="async" loading="lazy" alt="イメージ画像" width="1901" height="931" />
                     </p>
                 </a>
                 <div class="projectItemInfo">
