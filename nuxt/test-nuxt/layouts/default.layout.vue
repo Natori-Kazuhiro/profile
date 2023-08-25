@@ -9,6 +9,9 @@
 
 <script>
     import Nav from '@/components/Nav.vue';
+    // import '@/assets/js/contactDialog.js';
+    // import '@/assets/js/delayedVisibility.js';
+    // import '@/assets/js/fixedCircleVisibility.js';
 
     export default {
         name: 'default-layout', // コンポーネントの名前を指定
@@ -16,11 +19,17 @@
         Nav // コンポーネントを登録
         }
     };
+
 </script>
+
 
 <style>
 /* アプリケーション全体のスタイリング */
     /* general */
+    @import url('/assets/styles/acab_reset.css');
+    @import url("https://cdn.jsdelivr.net/npm/yakuhanjp@3.4.1/dist/css/yakuhanjp.min.css");
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;400;600&family=Krona+One&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
     :root {
         --color-darkNavy: rgba(22, 27, 34, 1);
         --color-white: #f3f3f3;
@@ -121,6 +130,12 @@
         padding-top: var(--header-height);
     }
 
+    main section{
+        container-type: inline-size;
+        width: 100%;
+        margin-bottom: 20cqw;
+    }
+
     main .contactDialogOpen{
         width: 50%;
         padding: 0.5em;
@@ -144,12 +159,12 @@
             padding: 0 0 var(--header-height);
         }
 
-        section{
+        main section{
             margin-bottom: 20cqw;
         }
 
         /* navからのスクロール調整 */
-        section:is(#skills,#projects){
+        main section:is(#skills,#projects){
             scroll-margin-top: -10cqw;
         }
     }

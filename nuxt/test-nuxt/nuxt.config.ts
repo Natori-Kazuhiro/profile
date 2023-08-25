@@ -1,6 +1,7 @@
 import { NuxtConfig } from '@nuxt/types';
 
 const config: NuxtConfig = {
+
   ssr: false, // SSR無効
   target: 'static',
   compilerOptions: {
@@ -17,7 +18,8 @@ const config: NuxtConfig = {
 
   layout: 'default-layout', // ここに layout の設定を追加
 
-  // その他の設定...
+
+
 };
 
 export default config;
