@@ -16,7 +16,7 @@ const config: NuxtConfig = {
     // 他のページの設定
   },
 
-  layout: 'default-layout', // ここに layout の設定を追加
+  layouts: 'default-layout', // ここに layout の設定を追加
 
 
 

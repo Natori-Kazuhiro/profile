@@ -1,17 +1,12 @@
 <template>
     <!-- 共通のナビゲーションコンポーネント -->
     <Nav />
-    <main>
-        <!-- 各ページのコンテンツを表示する -->
-        <slot /> 
-    </main>
+    <!-- 各ページのコンテンツを表示する -->
+    <slot /> 
 </template>
 
 <script>
     import Nav from '@/components/Nav.vue';
-    // import '@/assets/js/contactDialog.js';
-    // import '@/assets/js/delayedVisibility.js';
-    // import '@/assets/js/fixedCircleVisibility.js';
 
     export default {
         name: 'default-layout', // コンポーネントの名前を指定
@@ -26,7 +21,7 @@
 <style>
 /* アプリケーション全体のスタイリング */
     /* general */
-    @import url('/assets/styles/acab_reset.css');
+    @import url('@/assets/styles/acab_reset.css');
     @import url("https://cdn.jsdelivr.net/npm/yakuhanjp@3.4.1/dist/css/yakuhanjp.min.css");
     @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;400;600&family=Krona+One&family=Noto+Sans+JP:wght@300;400;700&display=swap');
 
@@ -153,13 +148,52 @@
         opacity: 0.9;
     }
 
+    /* navからのスクロール調整 */
+    main section:is(#skills,#projects){
+        scroll-margin-top: 5cqw;
+    }
+
+    main section{
+        container-type: inline-size;
+        width: 100%;
+        margin: 0 auto 20cqw;
+    }
+
+    main section h2{
+        margin-bottom: 1em;
+        font-size: var(--font-size-L);
+        font-family: var(--font-family-heading);
+        letter-spacing: var(--letter-spacing-heading);
+    }
+
+    main section h3{
+        margin-bottom: 0.5em;
+        font-size: var(--font-size-M);
+        line-height: 1.7;
+        font-family: var(--font-family-heading);
+        letter-spacing: var(--letter-spacing-heading);
+    }
+
+    main section p{
+        font-size: var(--font-size-S);
+    }
+
+
     @media (width <= 960px) {
+        :root {
+            --font-size-S: 4cqw;
+            --font-size-M: 7cqw;
+            --font-size-L: 9cqw;
+            --header-height: 18vw;
+        }
+
         /* ヘッダーが下部に固定されるため */
         main{
             padding: 0 0 var(--header-height);
         }
 
         main section{
+            width: 95%;
             margin-bottom: 20cqw;
         }
 
