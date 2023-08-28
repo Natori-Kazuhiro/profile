@@ -11,8 +11,11 @@
     export default {
         name: 'default-layout', // コンポーネントの名前を指定
         components: {
-        Nav // コンポーネントを登録
-        }
+            Nav // コンポーネントを登録
+        },
+        directives: {
+            ScrollReveal: VueScrollReveal(),
+        },
     };
 
 </script>

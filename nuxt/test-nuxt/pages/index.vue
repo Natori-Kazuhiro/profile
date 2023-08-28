@@ -3,10 +3,18 @@
     <ContactDialog />
     <FixedCircle />
     <main>
-      <FV />
-      <Skills />
-      <Projects />
-      <CTA />
+      <div class="fade-in-element" v-scroll-reveal>
+        <FV />
+      </div>
+      <div class="fade-in-element" v-scroll-reveal>
+        <Skills />
+      </div>
+      <div class="fade-in-element" v-scroll-reveal>
+        <Projects />
+      </div>
+      <div class="fade-in-element" v-scroll-reveal>
+        <CTA />
+      </div>
     </main>
   </default-layout>
 </template>
@@ -19,6 +27,8 @@ import Skills from '@/components/Skills.vue';
 import Projects from '@/components/Projects.vue';
 import CTA from '@/components/CTA.vue';
 
+import VueScrollReveal from 'vue-scroll-reveal';
+
 export default {
   components: {
     FixedCircle,
@@ -27,7 +37,10 @@ export default {
     Skills,
     Projects,
     CTA
-  }
+  },
+  directives: {
+    ScrollReveal: VueScrollReveal(),
+  },
 };
 </script>
 

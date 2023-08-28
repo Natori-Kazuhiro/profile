@@ -562,6 +562,7 @@
     "vue-bundle-renderer": "^1.0.3",
     "vue-devtools-stub": "^0.1.0",
     "vue-router": "^4.2.4",
+    "vue-scroll-reveal": "^2.1.0",
     "wait-on": "^7.0.1",
     "web-streams-polyfill": "^3.2.1",
     "webidl-conversions": "^3.0.1",
