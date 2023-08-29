@@ -7,15 +7,14 @@
 
 <script>
     import Nav from '@/components/Nav.vue';
+    import delayedVisibilityMixin from '@/mixins/delayedVisibility';
 
     export default {
         name: 'default-layout', // コンポーネントの名前を指定
         components: {
-            Nav // コンポーネントを登録
+            Nav,    
         },
-        directives: {
-            ScrollReveal: VueScrollReveal(),
-        },
+        mixins: [delayedVisibilityMixin],
     };
 
 </script>
@@ -101,8 +100,8 @@
         font-size: inherit;
     }
 
-        /* 遅延表示 クラスはdelayedVisibility.jsで操作*/
-    /* .delayedItem {
+    /* 遅延表示 クラスは/mixins/delayedVisibility.jsで操作*/
+    .delayedItem {
         opacity: 0;
         will-change: opacity
     }
@@ -110,15 +109,15 @@
     .delayedItem.isVisible {
         opacity: 1;
         transition: 0.5s;
-    } */
+    }
 
-    /* .delayedItem.isVisible[data-delay="500"]{
+    .delayedItem.isVisible[data-delay="500"]{
         transition-delay: 500ms;
     }
 
     .delayedItem.isVisible[data-delay="1000"]{
         transition-delay: 1000ms;
-    } */
+    }
 
     main{
         container-type: inline-size;

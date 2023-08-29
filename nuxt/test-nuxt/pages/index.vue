@@ -3,18 +3,10 @@
     <ContactDialog />
     <FixedCircle />
     <main>
-      <div class="fade-in-element" v-scroll-reveal>
         <FV />
-      </div>
-      <div class="fade-in-element" v-scroll-reveal>
         <Skills />
-      </div>
-      <div class="fade-in-element" v-scroll-reveal>
         <Projects />
-      </div>
-      <div class="fade-in-element" v-scroll-reveal>
         <CTA />
-      </div>
     </main>
   </default-layout>
 </template>
@@ -27,7 +19,9 @@ import Skills from '@/components/Skills.vue';
 import Projects from '@/components/Projects.vue';
 import CTA from '@/components/CTA.vue';
 
-import VueScrollReveal from 'vue-scroll-reveal';
+// JavaScript ファイルのインポート
+// import contactDialog from '@/assets/js/contactDialog.js'; 
+
 
 export default {
   components: {
@@ -38,9 +32,10 @@ export default {
     Projects,
     CTA
   },
-  directives: {
-    ScrollReveal: VueScrollReveal(),
-  },
+  mounted() {
+    // インポートした JavaScript ファイルの関数を実行
+    myScript.myFunction();
+  }
 };
 </script>
 

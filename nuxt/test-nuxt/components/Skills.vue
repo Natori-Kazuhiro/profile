@@ -64,6 +64,14 @@
     </section>
 </template>
 
+<script>
+import delayedVisibilityMixin from '@/mixins/delayedVisibility'; // ミックスインをインポート
+
+export default {
+	mixins: [delayedVisibilityMixin], // ミックスインを使用する
+};
+</script>
+
 <style scoped>
     #skills .skillWrap{
         display: grid;
