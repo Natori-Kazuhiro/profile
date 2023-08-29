@@ -75,7 +75,7 @@
             height: 10vw;
             padding-top: 8%;
         }
-    
+
         #contactDialog .contactDialogInner .contactDialogClose span,
         #contactDialog .contactDialogInner .contactDialogClose span::after{
             width: 7vw;

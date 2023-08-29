@@ -8,14 +8,16 @@
 <script>
     import Nav from '@/components/Nav.vue';
     import delayedVisibilityMixin from '@/mixins/delayedVisibility';
+    import contactDialogMixin from '@/mixins/contactDialogToggle';
 
     export default {
         name: 'default-layout', // コンポーネントの名前を指定
         components: {
             Nav,    
         },
-        mixins: [delayedVisibilityMixin],
+        mixins: [delayedVisibilityMixin, contactDialogToggleMixin]
     };
+    console.log(contactDialogMixin);
 
 </script>
 
@@ -24,7 +26,7 @@
 /* アプリケーション全体のスタイリング */
     /* general */
     @import url('@/assets/styles/acab_reset.css');
-    @import url("https://cdn.jsdelivr.net/npm/yakuhanjp@3.4.1/dist/css/yakuhanjp.min.css");
+    @import url('https://cdn.jsdelivr.net/npm/yakuhanjp@3.4.1/dist/css/yakuhanjp.min.css');
     @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;400;600&family=Krona+One&family=Noto+Sans+JP:wght@300;400;700&display=swap');
 
     :root {
@@ -134,8 +136,7 @@
     }
 
     main .contactDialogOpen{
-        width: 50%;
-        padding: 0.5em;
+        padding: 0.5em 2em     ;
         font-size: var(--font-size-L);
         font-family: var(--font-family-heading);
         letter-spacing: var(--letter-spacing-heading);
@@ -203,6 +204,13 @@
         main section:is(#skills,#projects){
             scroll-margin-top: -10cqw;
         }
+
+        main .contactDialogOpen{
+            display: block;
+            margin: auto;
+            color: var(--color-white);
+            background-color: var(--color-teal);
+        }  
     }
 
 </style>

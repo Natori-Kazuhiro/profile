@@ -16,7 +16,7 @@
 
 #fv h1 {
 	margin-bottom: 2em;
-	font-size: 80px;
+	font-size: 76px;
 	font-family: var(--font-family-heading);
 	letter-spacing: var(--letter-spacing-heading);
 	line-height: 1.8;

@@ -5,23 +5,24 @@
 			<div class="skill">
 				<h3>web</h3>
 				<ul>
-					<li>HTML</li>
-					<li>Pug</li>
+					<li>HTML,Pug</li>
 					<li>CSS,SASS,SCSS</li>
 					<li>JavaScript</li>
 					<li>jQuery</li>
-					<li>Vue.js</li>
+					<li>Vue.js,Nuxt.js</li>
 					<li>Three.js</li>
 					<li>Python</li>
 					<li>Gulp,npm-scripts</li>
 					<li>Git,Gitlab</li>
-					<li>Markdown</li>
-					<li>VSCode</li>
 				</ul>
 			</div>
 			<div class="skill">
 				<h3>design</h3>
 				<ul>
+					<li>STUDIO</li>
+					<li>webflow</li>
+					<li>Figma</li>
+					<li>Adobe XD</li>
 					<li>Adobe Photoshop</li>
 					<li>Adobe Illustrator</li>
 					<li>Affinity Publisher</li>
@@ -32,13 +33,10 @@
 			<div class="skill">
 				<h3>movie</h3>
 				<ul>
-					<li>shooting</li>
-					<li>XDCAM</li>
-					<li>HDCAM</li>
-					<li>editing</li>
+					<li>shooting,editing,lighting</li>
+					<li>XDCAM,HDCAM</li>
 					<li>XPRI NS</li>
 					<li>Adobe Premiere Pro</li>
-					<li>lighting</li>
 				</ul>
 			</div>
 		</div>
@@ -47,7 +45,7 @@
 			web―コーダー・マークアップエンジニア<br />
 			HTML、CSS、JavaScriptなどを使用したコーディング、各種デバイスやクロスブラウザーの対応、レスポンシブWebデザインやアクセシビリティに関する知識があります。<br />
 			その他にも、バージョン管理システムを使用したコード管理などのデータ管理、チーム内のナレッジ管理やルール制定、テンプレートエンジンなどを使用したマークアップの効率化を行ってきました。<br />
-			AIの使用による制作の効率化にも関心があり、ChatGPTなどのAIを活用しています。
+			また、STUDIOやwebflowなどノーコード系の開発ツールを使用する事が出来ます。<br />
 		</p>
 		<br />
 		<p>
