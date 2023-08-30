@@ -29,4 +29,4 @@ const contactDialogToggleMixin = {
   }
 };
 
-export default contactDialogMixin;
+export default contactDialogToggleMixin;

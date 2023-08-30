@@ -8,16 +8,15 @@
 <script>
     import Nav from '@/components/Nav.vue';
     import delayedVisibilityMixin from '@/mixins/delayedVisibility';
-    import contactDialogMixin from '@/mixins/contactDialogToggle';
+    import contactDialogToggleMixin from '@/mixins/contactDialogToggle';
 
     export default {
         name: 'default-layout', // コンポーネントの名前を指定
         components: {
             Nav,    
         },
-        mixins: [delayedVisibilityMixin, contactDialogToggleMixin]
+        mixins: [delayedVisibilityMixin, contactDialogToggleMixin],
     };
-    console.log(contactDialogMixin);
 
 </script>
 
@@ -196,7 +195,7 @@
         }
 
         main section{
-            width: 95%;
+            width: 92%;
             margin-bottom: 20cqw;
         }
 

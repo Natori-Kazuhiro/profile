@@ -12,8 +12,8 @@
 					<li>Vue.js,Nuxt.js</li>
 					<li>Three.js</li>
 					<li>Python</li>
-					<li>Gulp,npm-scripts</li>
-					<li>Git,Gitlab</li>
+					<li>Node.js,npm-scripts,Gulp</li>
+					<li>Git,Github,Gitlab</li>
 				</ul>
 			</div>
 			<div class="skill">

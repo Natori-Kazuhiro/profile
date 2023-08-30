@@ -32,7 +32,7 @@
 	}
 
 	#fv h1 {
-		font-size: 14vw;
+		font-size: 13vw;
 		margin-bottom: 1em;
 		line-height: 1.3;
 	}
