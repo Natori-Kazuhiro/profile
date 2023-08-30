@@ -118,7 +118,7 @@
         <p>
           画像から日本語テキストを抽出してテキスト化、抽出したテキストをクリップボードへのコピーが出来ます。<br />
           画像が中心のサイトを制作する際に、「altの文字起こし」を行いたいというモチベーションで作りました。<br />
-          コードへのリテラシーに関わらず使用出来るようにしたかったので、ローカルからではなくブラウザから実行出来るようにしました。<br />
+          コードへのリテラシーに関わらず使用出来るする目的で、ローカルからではなくブラウザから実行出来るようにしました。<br />
           ブラウザから実行出来るPythonのライブラリTesseractを利用しています。
         </p>
       </div>
@@ -199,12 +199,8 @@
     .projectItem {
       margin-bottom: 20cqw;
 
-      .projectItemInfo {
-        margin-bottom: 2em;
-
-        > p {
-          font-size: 1.3em;
-        }
+      h3{
+        margin-bottom: 0.7em;
       }
 
       .projectImage {
@@ -218,6 +214,16 @@
             transform: scale(1.05);
 				}
 			}
+
+      .projectItemInfo {
+        margin-bottom: 2em;
+
+        > p {
+          font-size: 1.3em;
+        }
+      }
+
+
       }
     }
   }
