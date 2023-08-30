@@ -21,7 +21,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 #fixedCircle {
 	position: fixed;
 	inset: auto -15vw -10vw auto;
@@ -35,18 +35,16 @@ export default {
 	mix-blend-mode: difference;
 	opacity: 0.7;
 	transition: 0.5s;
-}
 
-#fixedCircle.isFiltered {
-	opacity: 0.05;
-	transition: 1s;
-	filter: hue-rotate(180deg);
-}
-
-@media (width <=960px) {
-	#fixedCircle {
+	@media (width <=960px) {
 		width: 100vw;
 		height: 100vw;
+	}
+
+	&.isFiltered {
+		opacity: 0.05;
+		transition: 1s;
+		filter: hue-rotate(180deg);
 	}
 }
 </style>
