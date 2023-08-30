@@ -1,215 +1,220 @@
 <template>
-    <!-- 共通のナビゲーションコンポーネント -->
-    <Nav />
-    <!-- 各ページのコンテンツを表示する -->
-    <slot /> 
+  <Html lang="ja">
+    <Head>
+      <Title>Kazuhiro Natori ―Front-end Developer</Title>
+      <Meta name="description" :content="`Kazuhiro Natori ―Front-end Developer`" />
+    </Head>
+  </Html>
+  <!-- 共通のナビゲーションコンポーネント -->
+  <Nav />
+  <!-- 各ページのコンテンツを表示する -->
+  <slot />
 </template>
 
 <script>
-    import Nav from '@/components/Nav.vue';
-    import delayedVisibilityMixin from '@/mixins/delayedVisibility';
-    import contactDialogToggleMixin from '@/mixins/contactDialogToggle';
+import Nav from "@/components/Nav.vue";
+import delayedVisibilityMixin from "@/mixins/delayedVisibility";
+import contactDialogToggleMixin from "@/mixins/contactDialogToggle";
 
-    export default {
-        name: 'default-layout', // コンポーネントの名前を指定
-        components: {
-            Nav,    
-        },
-        mixins: [delayedVisibilityMixin, contactDialogToggleMixin],
-    };
-
+export default {
+	title: "Hello Nuxt3!!",
+  name: "default-layout", // コンポーネントの名前を指定
+  components: {
+    Nav,
+  },
+  mixins: [delayedVisibilityMixin, contactDialogToggleMixin],
+};
 </script>
 
 
 <style>
 /* アプリケーション全体のスタイリング */
-    /* general */
-    @import url('@/assets/styles/acab_reset.css');
-    @import url('https://cdn.jsdelivr.net/npm/yakuhanjp@3.4.1/dist/css/yakuhanjp.min.css');
-    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;400;600&family=Krona+One&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+/* general */
+@import url("@/assets/styles/acab_reset.css");
+@import url("https://cdn.jsdelivr.net/npm/yakuhanjp@3.4.1/dist/css/yakuhanjp.min.css");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;400;600&family=Krona+One&family=Noto+Sans+JP:wght@300;400;700&display=swap");
 
-    :root {
-        --color-darkNavy: rgba(22, 27, 34, 1);
-        --color-white: #f3f3f3;
-        --color-teal: #6baf8d;
-        --color-darkGray: #232e33;
-        --font-size-S: 2cqw;
-        --font-size-M: 3cqw;
-        --font-size-L: 5cqw;
-        --font-weight-thin: 100;
-        --font-weight-medium: 300;
-        --font-weight-bold: 600;
-        --font-family-heading: 'Krona One', 'Noto Sans JP', cursive;
-        /* cursiveにfont-feature-settingsが効かないので調整 */
-        --letter-spacing-heading: -0.04em;
-        --width-inner: min(100%, 960px);
-        --header-height: 100px;
-        --scrollbar-size: 10px;
-        scroll-behavior: smooth;
-        /* ページ内スクロール時の高さ調整 */
-        scroll-padding-top: var(--header-height);
-    }
+:root {
+  --color-darkNavy: rgba(22, 27, 34, 1);
+  --color-white: #f3f3f3;
+  --color-teal: #6baf8d;
+  --color-darkGray: #232e33;
+  --font-size-S: 2cqw;
+  --font-size-M: 3cqw;
+  --font-size-L: 5cqw;
+  --font-weight-thin: 100;
+  --font-weight-medium: 300;
+  --font-weight-bold: 600;
+  --font-family-heading: "Krona One", "Noto Sans JP", cursive;
+  /* cursiveにfont-feature-settingsが効かないので調整 */
+  --letter-spacing-heading: -0.04em;
+  --width-inner: min(100%, 960px);
+  --header-height: 100px;
+  --scrollbar-size: 10px;
+  scroll-behavior: smooth;
+  /* ページ内スクロール時の高さ調整 */
+  scroll-padding-top: var(--header-height);
+}
 
-    body {
-        margin: 0 auto;
-        font-family: YakuHanJP, 'IBM Plex Sans' ,'Noto Sans JP' , sans-serif;
-        font-feature-settings: "palt";
-        color: var(--color-white);
-        background-color: var(--color-darkNavy);
-        scrollbar-color: var(--color-teal) var(--color-darkGray);
-    }
-    /* 効いてないかも */
-    dialog{
-        scrollbar-color: var(--color-teal) 
-        var(--color-darkGray);
-    }
+body {
+  margin: 0 auto;
+  font-family: YakuHanJP, "IBM Plex Sans", "Noto Sans JP", sans-serif;
+  font-feature-settings: "palt";
+  color: var(--color-white);
+  background-color: var(--color-darkNavy);
+  scrollbar-color: var(--color-teal) var(--color-darkGray);
+}
+/* 効いてないかも */
+dialog {
+  scrollbar-color: var(--color-teal) var(--color-darkGray);
+}
 
-    body::-webkit-scrollbar {
-        width: var(--scrollbar-size);
-    }
+body::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+}
 
-    body::-webkit-scrollbar-track {
-        background: var(--color-darkGray);
-        border-radius: 1px;
-    }
+body::-webkit-scrollbar-track {
+  background: var(--color-darkGray);
+  border-radius: 1px;
+}
 
-    body::-webkit-scrollbar-thumb {
-        background: var(--color-teal);
-        border-radius: 1px;
-    }
+body::-webkit-scrollbar-thumb {
+  background: var(--color-teal);
+  border-radius: 1px;
+}
 
-    h1,h2,h3,p{
-        width: fit-content;
-    }
+h1,
+h2,
+h3,
+p {
+  width: fit-content;
+}
 
-    p{
-        line-height: 2;
-        text-align: justify;
-        
-    }
+p {
+  line-height: 2;
+  text-align: justify;
+}
 
-    a{
-        color: inherit;
-        text-decoration: underline;
-        text-decoration-color: inherit;
-        text-underline-offset: 0.3ex;
-    }
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: inherit;
+  text-underline-offset: 0.3ex;
+}
 
-    button {
-        background-color: transparent;
-        border: none;
-        font-size: inherit;
-    }
+button {
+  background-color: transparent;
+  border: none;
+  font-size: inherit;
+}
 
-    /* 遅延表示 クラスは/mixins/delayedVisibility.jsで操作*/
-    .delayedItem {
-        opacity: 0;
-        will-change: opacity
-    }
-    
-    .delayedItem.isVisible {
-        opacity: 1;
-        transition: 0.5s;
-    }
+/* 遅延表示 クラスは/mixins/delayedVisibility.jsで操作*/
+.delayedItem {
+  opacity: 0;
+  will-change: opacity;
+}
 
-    .delayedItem.isVisible[data-delay="500"]{
-        transition-delay: 500ms;
-    }
+.delayedItem.isVisible {
+  opacity: 1;
+  transition: 0.5s;
+}
 
-    .delayedItem.isVisible[data-delay="1000"]{
-        transition-delay: 1000ms;
-    }
+.delayedItem.isVisible[data-delay="500"] {
+  transition-delay: 500ms;
+}
 
-    main{
-        container-type: inline-size;
-        width: var(--width-inner);
-        margin: auto;
-        /* ヘッダーの高さ分ずらす */
-        padding-top: var(--header-height);
-    }
+.delayedItem.isVisible[data-delay="1000"] {
+  transition-delay: 1000ms;
+}
 
-    main section{
-        container-type: inline-size;
-        width: 100%;
-        margin-bottom: 20cqw;
-    }
+main {
+  container-type: inline-size;
+  width: var(--width-inner);
+  margin: auto;
+  /* ヘッダーの高さ分ずらす */
+  padding-top: var(--header-height);
+}
 
-    main .contactDialogOpen{
-        padding: 0.5em 2em     ;
-        font-size: var(--font-size-L);
-        font-family: var(--font-family-heading);
-        letter-spacing: var(--letter-spacing-heading);
-        color: var(--color-darkNavy);
-        background-color: var(--color-white);
-        transition-duration: 0.5s;
-    }
+main section {
+  container-type: inline-size;
+  width: 100%;
+  margin-bottom: 20cqw;
+}
 
-    main .contactDialogOpen:hover{
-        color: var(--color-white);
-        background-color: var(--color-teal);
-        opacity: 0.9;
-    }
+main .contactDialogOpen {
+  padding: 0.5em 2em;
+  font-size: var(--font-size-L);
+  font-family: var(--font-family-heading);
+  letter-spacing: var(--letter-spacing-heading);
+  color: var(--color-darkNavy);
+  background-color: var(--color-white);
+  transition-duration: 0.5s;
+}
 
-    /* navからのスクロール調整 */
-    main section:is(#skills,#projects){
-        scroll-margin-top: 5cqw;
-    }
+main .contactDialogOpen:hover {
+  color: var(--color-white);
+  background-color: var(--color-teal);
+  opacity: 0.9;
+}
 
-    main section{
-        container-type: inline-size;
-        width: 100%;
-        margin: 0 auto 20cqw;
-    }
+/* navからのスクロール調整 */
+main section:is(#skills, #projects) {
+  scroll-margin-top: 5cqw;
+}
 
-    main section h2{
-        margin-bottom: 1em;
-        font-size: var(--font-size-L);
-        font-family: var(--font-family-heading);
-        letter-spacing: var(--letter-spacing-heading);
-    }
+main section {
+  container-type: inline-size;
+  width: 100%;
+  margin: 0 auto 20cqw;
+}
 
-    main section h3{
-        margin-bottom: 0.5em;
-        font-size: var(--font-size-M);
-        line-height: 1.7;
-        font-family: var(--font-family-heading);
-        letter-spacing: var(--letter-spacing-heading);
-    }
+main section h2 {
+  margin-bottom: 1em;
+  font-size: var(--font-size-L);
+  font-family: var(--font-family-heading);
+  letter-spacing: var(--letter-spacing-heading);
+}
 
-    main section p{
-        font-size: var(--font-size-S);
-    }
+main section h3 {
+  margin-bottom: 0.5em;
+  font-size: var(--font-size-M);
+  line-height: 1.7;
+  font-family: var(--font-family-heading);
+  letter-spacing: var(--letter-spacing-heading);
+}
 
+main section p {
+  font-size: var(--font-size-S);
+}
 
-    @media (width <= 960px) {
-        :root {
-            --font-size-S: 4cqw;
-            --font-size-M: 7cqw;
-            --font-size-L: 9cqw;
-            --header-height: 18vw;
-        }
+@media (width <= 960px) {
+  :root {
+    --font-size-S: 4cqw;
+    --font-size-M: 7cqw;
+    --font-size-L: 9cqw;
+    --header-height: 18vw;
+  }
 
-        /* ヘッダーが下部に固定されるため */
-        main{
-            padding: 0 0 var(--header-height);
-        }
+  /* ヘッダーが下部に固定されるため */
+  main {
+    padding: 0 0 var(--header-height);
+  }
 
-        main section{
-            width: 92%;
-            margin-bottom: 20cqw;
-        }
+  main section {
+    width: 92%;
+    margin-bottom: 20cqw;
+  }
 
-        /* navからのスクロール調整 */
-        main section:is(#skills,#projects){
-            scroll-margin-top: -10cqw;
-        }
+  /* navからのスクロール調整 */
+  main section:is(#skills, #projects) {
+    scroll-margin-top: -10cqw;
+  }
 
-        main .contactDialogOpen{
-            display: block;
-            margin: auto;
-            color: var(--color-white);
-            background-color: var(--color-teal);
-        }  
-    }
-
+  main .contactDialogOpen {
+    display: block;
+    margin: auto;
+    color: var(--color-white);
+    background-color: var(--color-teal);
+  }
+}
 </style>
