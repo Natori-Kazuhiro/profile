@@ -95,7 +95,7 @@
       <div class="projectItem">
         <a
           class="projectItemLink"
-          href="./projects/scrapingAlt/"
+          href="./projects/imageToAlt/"
           target="_blank"
           rel="noopener"
         >
