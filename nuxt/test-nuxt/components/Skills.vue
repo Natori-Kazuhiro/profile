@@ -3,7 +3,7 @@
     <h2>skills</h2>
     <div class="skillsWrap">
       <div class="skill">
-        <h3>web</h3>
+        <h3>web develop</h3>
         <ul>
           <li>HTML,Pug</li>
           <li>CSS,SASS,SCSS</li>
@@ -14,18 +14,23 @@
           <li>Three.js</li>
           <li>Python</li>
           <li>Node.js,npm-scripts,Gulp</li>
-          <li>WordPress</li>
           <li>Git,Github,Gitlab</li>
+        </ul>
+      </div>
+      <div class="skill">
+        <h3>CMS,EC,NoCode</h3>
+        <ul>
+          <li>WordPress</li>
+          <li>STUDIO</li>
+          <li>webflow</li>
+          <li>BASE</li>
+          <li>Shopify</li>
         </ul>
       </div>
       <div class="skill">
         <h3>design</h3>
         <ul>
-          <li>STUDIO</li>
-          <li>webflow</li>
           <li>Figma</li>
-          <li>BASE</li>
-          <li>Shopify</li>
           <li>Adobe XD</li>
           <li>Adobe Photoshop</li>
           <li>Adobe Illustrator</li>
@@ -47,11 +52,22 @@
     <div class="details">
       <h3>details</h3>
       <div class="detail">
-        <h4>web<span>―コーディング・フロントエンド</span></h4>
+        <h4>web develop<span>―コーディング・フロントエンド</span></h4>
         <p>
-          幅広いフロントエンド開発のスキルを持っており、ウェブサイトの魅力的なUIとパフォーマンスを実現するためにスキルを活かしてきました。<br />
-          HTML、CSS、JavaScriptなどを使用したコーディング、各種デバイスやクロスブラウザーの対応、レスポンシブWebデザインやアクセシビリティに関する知識があります。<br />
-          その他にも、バージョン管理システムを使用したコード管理などのデータ管理、チーム内のナレッジ管理やルール制定、テンプレートエンジンなどを使用したマークアップの効率化を行ってきました。<br />
+          Web開発のフロントエンド領域で、幅広いスキルセットを活かして、魅力的で高機能なウェブページを構築します。<br />
+          デザインとコーディングの融合により、ユーザーフレンドリーなユーザーエクスペリエンスを提供します。<br />
+          特にランディングページやコーポレートサイト、サービスサイトの制作が得意です。<br />
+          フロントエンドのタスクランナーを活用し、開発プロセスを効率化して品質を確保します。<br />
+          また、Gitで協力開発を円滑に進め、チームでの協力をサポートします。<br />
+          フロントエンド開発において、幅広いニーズに応えることができます。
+        </p>
+      </div>
+      <div>
+        <h4>CMS,EC,NoCode<span>―</span></h4>
+        <p>
+          多くのプラットフォームで経験を積んでおり、クライアントの要件に合わせて最適なソリューションを提供します。<br />
+          ショッピングサイトからコーポレートウェブサイト、ノーコード開発まで、幅広いプロジェクトに対応できます。<br />
+          デザインとコーディングのスキルを活かし、プロフェッショナルなウェブプレゼンスを実現し、オンラインビジネスの成功に貢献します。
         </p>
       </div>
       <div class="detail">
@@ -59,7 +75,7 @@
         <p>
           多様なデザインスキルで、WebデザインやDTPデザイン、グラフィックデザインを制作する事が出来ます。<br />
           特にミニマルなデザインや精密な文字組みが得意です。<br />
-          また、私はSTUDIOやwebflowなどのノーコード開発ツールも使用できるため、デザインから実装まで一貫した開発をスムーズに行うことが可能です。<br />
+          デザインから実装まで一貫した開発をスムーズに行うことが可能です。<br />
         </p>
       </div>
       <div class="detail">
@@ -83,9 +99,15 @@ export default {
 
 <style lang="scss" scoped>
 #skills {
+  /* navからのスクロール調整 */
+  scroll-margin-top: var(--header-height);
+    @media (width <= 960px) {
+      scroll-margin-top: 5cqw;
+    }
+
   .skillsWrap {
     display: grid;
-    grid-template: 1fr / repeat(3, 1fr);
+    grid-template: 1fr / repeat(2, 1fr);
 
     @media (width <=960px) {
       grid-template: repeat(2, max-content) / 1fr 1fr;

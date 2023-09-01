@@ -151,15 +151,6 @@ main {
       }
     }
 
-    /* navからのスクロール調整 */
-    &#skills, &#projects{
-      scroll-margin-top: var(--header-height);
-
-      @media (width <= 960px) {
-        scroll-margin-top: 5cqw;
-      }
-    }
-
     h2 {
       margin-bottom: 1em;
       font-size: var(--font-size-L);

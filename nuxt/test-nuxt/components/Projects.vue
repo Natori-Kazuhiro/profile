@@ -186,6 +186,12 @@
 
 <style lang="scss" scoped>
 #projects {
+  scroll-margin-top: var(--header-height);
+
+  @media (width <= 960px) {
+    scroll-margin-top: 5cqw;
+  }
+
   .projectItems {
     display: grid;
     grid-template: 1fr 1fr / 1fr;
