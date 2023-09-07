@@ -11,6 +11,7 @@ const config: NuxtConfig = {
   app: {
       baseURL: '/profile/',
   },
+  
   pages: {
     index: {
       entry: 'pages/index.ts',
