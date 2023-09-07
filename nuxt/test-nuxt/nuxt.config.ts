@@ -7,12 +7,10 @@ const config: NuxtConfig = {
   compilerOptions: {
     isCustomElement: (tag: string) => tag.startsWith('nuxt-')
   },
-
   // デプロイの際にベースになるURLを設定
   app: {
       baseURL: '/profile/',
   },
-
   pages: {
     index: {
       entry: 'pages/index.ts',
@@ -27,7 +25,5 @@ const config: NuxtConfig = {
     // SCSS ファイルのパスを追加
     '@/assets/styles/main.scss',
   ],
-
-};
 
 export default config;
