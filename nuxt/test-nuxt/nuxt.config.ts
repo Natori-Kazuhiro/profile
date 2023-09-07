@@ -18,6 +18,12 @@ const config: NuxtConfig = {
 
   layouts: 'default-layout', // ここに layout の設定を追加
 
+  css: [
+    // SCSS ファイルのパスを追加
+    '@/assets/styles/main.scss',
+  ],
+
+
 
 
 };
