@@ -1,0 +1,1 @@
+const d={mounted(){const t=document.querySelectorAll(".delayedItem"),i=new IntersectionObserver(e=>{e.forEach(s=>{s.isIntersecting?s.target.classList.add("isVisible"):s.target.classList.remove("isVisible")})},{threshold:.03});t.forEach(e=>{i.observe(e)})}};export{d};

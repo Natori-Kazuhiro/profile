@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>profile</title>
+  <link rel="preload" href="./css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+</head>
+
+<body>
+
+  <header>
+    <div class="headerInner">
+      <h1>Kazuhiro Natori</h1>
+      <nav>
+        <a href="#skills">skills</a>
+        <a href="#projects">projects</a>
+        <button class="js-contactDialogOpen">contact</button>
+    </nav>
+    </div>
+  </header>
+
+  <!-- 固定の円 -->
+  <p id="fixedCircle"></p>
+
+  <main>
+
+    <!-- モーダル -->
+    <dialog id="contactDialog">
+      <div class="contactDialogInner js-contactDialogInner">
+        <iframe id="contactDialogIframe" src="https://docs.google.com/forms/d/e/1FAIpQLSfxlrSsCUGl79m6VLtDI5Vq0_FpmrwZ9XzwKqoyLhZLE5cHlA/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
+        <button class="contactDialogClose js-contactDialogClose"><span></span>close</button>
+      </div>
+    </dialog>
+
+    <section id="fv">
+      <h1>
+        <span class="delayedItem" data-delay="500">Kazuhiro Natori</span><br>
+        <span class="delayedItem" data-delay="1000">―markup engineer</span>
+      </h1>
+      <button class="contactDialogOpen js-contactDialogOpen">contact</button>
+    </section>
+
+    <section id="skills" class="delayedItem">
+      <h2>skills</h2>
+      <div class="skillWrap">
+        <div class="skill">
+          <h3>web</h3>
+          <ul>
+            <li>HTML</li>
+            <li>Pug</li>
+            <li>CSS,SASS,SCSS</li>
+            <li>JavaScript</li>
+            <li>jQuery</li>
+            <li>Vue.js</li>
+            <li>Three.js</li>
+            <li>Python</li>
+            <li>Gulp,npm-scripts</li>
+            <li>Git,Gitlab</li>
+            <li>Markdown</li>
+            <li>VSCode</li>
+          </ul>
+        </div>
+        <div class="skill">
+          <h3>design</h3>
+          <ul>
+            <li>Adobe Photoshop</li>
+            <li>Adobe Illustrator</li>
+            <li>Affinity Publisher</li>
+            <li>Affinity Designer</li>
+            <li>Affinity Photo</li>
+          </ul>
+        </div>
+        <div class="skill">
+          <h3>movie</h3>
+          <ul>
+            <li>shooting</li>
+            <li>XDCAM</li>
+            <li>HDCAM</li>
+            <li>editing</li>
+            <li>XPRI NS</li>
+            <li>Adobe Premiere Pro</li>
+            <li>lighting</li>
+          </ul>
+        </div>
+      </div>
+      <h3>details</h3>
+      <p>
+        web―コーダー・マークアップエンジニア<br>
+        HTML、CSS、JavaScriptなどを使用したコーディング、各種デバイスやクロスブラウザーの対応、レスポンシブWebデザインやアクセシビリティに関する知識があります。<br>
+        その他にも、バージョン管理システムを使用したコード管理などのデータ管理、チーム内のナレッジ管理やルール制定、テンプレートエンジンなどを使用したマークアップの効率化を行ってきました。<br>
+        AIの使用による制作の効率化にも関心があり、ChatGPTなどのAIを活用しています。
+      </p>
+      <br>
+      <p>
+        design―グラフィックデザイナー<br>
+        Illustratorなどを使用して、WebやDTP、プロダクト用のグラフィックデザインを制作する事が出来ます。<br>
+        ミニマルなデザインや精密な文字組みが得意です。
+      </p>
+      <br>
+      <p>
+        movie―動画カメラマン<br>
+        XDCAMなどの業務用カメラでのスタジオ撮影、報道・ENG撮影と映像編集が可能です。<br>
+        放送局での放映可能なクオリティで撮影を行う事が出来ます。<br>
+      </p>
+    </section>
+
+    <section id="projects" class="delayedItem">
+      <h2>projects</h2>
+      <div class="projectItems">
+        <div class="projectItem">
+          <a class="projectItemLink" href="https://toricowear.myshopify.com/" target="_blank" rel="noopener">
+            <h3>虜</h3>
+            <p class="projectImage">
+              <img src="./img/projects_image_torico.webp" decording="async" loading="lazy" alt="イメージ画像" width="1901" height="931">
+            </p>
+          </a>
+          <div class="projectItemInfo">
+            <p>
+              ECサイト(Shopify)―全ページのコーディング
+            </p>
+            <p>
+              HTML/CSS/JavaScript/Liquid/Shopify
+            </p>
+          </div>
+          <p>
+            テーマ・アプリ選定とテーマ編集のコーディング・テンプレート改修を行いました。<br>
+            シンプルなトンマナで全体で一貫させるために、細かい配慮を行ってテンプレート改修やカスタムCSSを書きました。<br>
+            商品表示の更新作業を、コード編集ではなくCMS内で完結出来るようにliquidで実装したのもポイントです。
+          </p>
+        </div>
+        <div class="projectItem">
+          <a class="projectItemLink" href="https://lp.moeplus.site/" target="_blank" rel="noopener">
+            <h3>moeplus</h3>
+            <p class="projectImage">
+              <img src="./img/projects_image_moeplus.webp" decording="async" loading="lazy" alt="イメージ画像" width="1901" height="931">
+            </p>
+          </a>
+          <div class="projectItemInfo">
+            <p>
+              <a href="https://lp.moeplus.site/" target="_blank" rel="noopener">LP</a>と<a href="https://www.moeplus.site/" target="_blank" rel="noopener">ECサイト(BASE)</a><br>
+              LP―全LPのコーディング,BASE―全ページのテンプレート改修(一部デザイン提案)
+            </p>
+            <p>
+              HTML/CSS/JavaScript/BASE
+            </p>
+          </div>
+          <p>
+            4つのLPとBASEの各ページを横断するサイト設計になっています。<br>
+            LPとBASE内でレギュレーションが違うという条件の中で、全てのページで見た目の違和感が出ないような実装・CSSレイアウトを行いました。
+          </p>
+        </div>
+        <div class="projectItem">
+          <a href="./projects/chainGeometry/" target="_blank" rel="noopener">
+            <h3>Three.jsの鎖</h3>
+            <p class="projectImage">
+              <img src="./img/projects_image_chainGeometry.webp" decording="async" loading="lazy" alt="イメージ画像">
+            </p>
+          </a>
+          <div class="projectItemInfo">
+            <p>
+              Webアニメーション―デザイン・コーディング</p>
+            <p>
+              HTML/CSS/Three.js/JavaScript
+            </p>
+          </div>
+          <p>
+            Three.jsを使用してみたかったので制作しました。<br>
+            鎖は自分の好きなオブジェクトです。標準のジオメトリーでは表現が難しかったので、そこが凝ったポイントです。<br>
+            パスを使用して鎖の1つをつくり、それをループさせて鎖のように見せています。金属的なテクスチャーやスタジオライティングで、「写真のテクスチャーを使わずにリアルに見せる」ようにしました。<br>
+            簡単なマウスインタラクションを実装したので、マウスを移動させてみてください。
+          </p>
+        </div>
+        <div class="projectItem">
+          <a class="projectItemLink" href="./projects/scrapingAlt/" target="_blank" rel="noopener">
+            <h3>画像から日本語テキストを抽出するページ</h3>
+            <p class="projectImage">
+              <img src="./img/projects_image_scrapingAlt.webp" decording="async" loading="lazy" alt="イメージ画像" width="1918" height="931">
+            </p>
+          </a>
+          <div class="projectItemInfo">
+            <p>
+              Webサイト―デザイン・コーディング</p>
+            <p>
+              HTML/CSS/JavaScript/Python
+            </p>
+          </div>
+          <p>
+            画像から日本語テキストを抽出してテキスト化、抽出したテキストをクリップボードへのコピーが出来ます。<br>
+            画像が中心のサイトを制作する際に、「altの文字起こし」を行いたいというモチベーションで作りました。<br>
+            コードへのリテラシーに関わらず使用出来るようにしたかったので、ローカルからではなくブラウザから実行出来るようにしました。<br>
+            ブラウザから実行出来るPythonのライブラリTesseractを利用しています。
+          </p>
+        </div>
+
+        <div class="projectItem">
+          <a class="projectItemLink" href="https://moribus.jp/service/casting/" target="_blank" rel="noopener">
+            <h3>Moribus</h3>
+            <p class="projectImage">
+              <img src="./img/projects_image_moribus.webp" decording="async" loading="lazy" alt="moribus" width="1918" height="931">
+            </p>
+          </a>
+          <div class="projectItemInfo">
+            <p>
+              LP―コーディング
+            </p>
+            <p>
+              HTML/CSS/JavaScript/jQuery
+            </p>
+          </div>
+          <p>
+            適切なレスポンシブ対応をしつつ、パフォーマンスのいいサイトになるように工夫しました。<br>
+            画像を多用したページですが、重いページにならないように工夫しています。
+          </p>
+        </div>
+        <div class="projectItem">
+          <a class="projectItemLink" href="https://needle-biyou.com/lporder/002/nc-056S7DO3BGG/" target="_blank" rel="noopener">
+            <h3>ヤーマン/ニードルリフトクリーム</h3>
+            <p class="projectImage">
+              <img src="./img/projects_image_yaman.webp" decording="async" loading="lazy" alt="イメージ画像" width="1901" height="931">
+            </p>
+          </a>
+          <div class="projectItemInfo">
+            <p>
+              LP―コーディング
+            </p>
+            <p>
+              HTML/CSS/JavaScript
+            </p>
+          </div>
+          <p>
+            動きの要件を満たしつつ、パフォーマンスのいいLPになるように実装しました。<br>
+            選択肢によって表示が切り替わるアプリのような見た目にしています。
+          </p>
+        </div>
+      </div>
+      <!-- /.projectItem -->
+    </section>
+
+    <section class="delayedItem">
+      <p class="contactOffer">
+        パフォーマンスの高いコーディング<br>
+        モバイルフレンドリーなデザイン<br>
+        スムーズなユーザーエクスペリエンス<br>
+        ぜひコンタクトしてください
+      </p>
+      <button class="contactDialogOpen js-contactDialogOpen">contact</button>
+    </section>
+
+  </main>
+
+  <script type="module" defer>
+    if (!("container" in document.documentElement.style)) {
+        import("https://unpkg.com/container-query-polyfill@^0.2.0");
+    }
+  </script>
+  <script src="./js/contactDialog.js" defer></script>
+  <script src="./js/fixedCircleVisibility.js" defer></script>
+  <script src="./js/delayedVisibility.js" defer></script>
+
+</body>
+
+</html>
