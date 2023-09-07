@@ -61,7 +61,7 @@
         </p>
       </div>
       <div>
-        <h4>CMS,EC,NoCode<span>―</span></h4>
+        <h4>CMS,EC,NoCode<span>―CMS・EC・ノーコード開発</span></h4>
         <p>
           多くのプラットフォームで経験を積んでおり、クライアントの要件に合わせて最適なソリューションを提供します。<br />
           ショッピングサイトからコーポレートウェブサイト、ノーコード開発まで、幅広いプロジェクトに対応できます。<br />
@@ -110,7 +110,7 @@ export default {
     grid-template: 1fr / repeat(2, 1fr);
 
     @media (width <=960px) {
-      grid-template: repeat(2, max-content) / 1fr 1fr;
+      grid-template: repeat(2, max-content) / 1fr;
     }
 
 		.skill{
@@ -122,7 +122,11 @@ export default {
 				margin-bottom: 3em;
 				font-size: var(--font-size-S);
 				line-height: 1.7;
-			}
+
+        @media (width <=960px) {
+          font-size: var(--font-size-M);
+        }
+      }
 		}
 	}
 
@@ -133,11 +137,17 @@ export default {
 
       span{
         font-size: 0.7em;
+
+        @media (width <=960px) {
+          display: block;
+          text-align: end;
+          margin-bottom: 1em;
+        }
       }
     }
 
     p {
-      margin-bottom: 2em;
+      margin-bottom: 3em;
     }
   }
 }
