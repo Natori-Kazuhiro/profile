@@ -3,22 +3,10 @@
     <h2>projects</h2>
     <div class="projectItems">
       <div class="projectItem">
-        <a
-          class="projectItemLink"
-          href="https://toricowear.myshopify.com/"
-          target="_blank"
-          rel="noopener"
-        >
-          <h3>虜</h3>
+        <a class="projectItemLink" href="https://toricowear.myshopify.com/" target="_blank" rel="noopener">
+          <h3>虜<i class="fas fa-external-link-alt"></i></h3>
           <p class="projectImage">
-            <img
-              src="~/assets//img/projects_image_torico.webp"
-              decording="async"
-              loading="lazy"
-              alt="イメージ画像"
-              width="1901"
-              height="931"
-            />
+            <img src="~/assets//img/projects_image_torico.webp" decording="async" loading="lazy" alt="イメージ画像" width="1901" height="931" />
           </p>
         </a>
         <div class="projectItemInfo">
@@ -32,34 +20,15 @@
         </p>
       </div>
       <div class="projectItem">
-        <a
-          class="projectItemLink"
-          href="https://lp.moeplus.site/"
-          target="_blank"
-          rel="noopener" 
-        >
-          <h3>moeplus</h3>
+        <a class="projectItemLink" href="https://lp.moeplus.site/" target="_blank" rel="noopener">
+          <h3>moeplus<i class="fas fa-external-link-alt"></i></h3>
           <p class="projectImage">
-            <img
-              src="~/assets//img/projects_image_moeplus.webp"
-              decording="async"
-              loading="lazy"
-              alt="イメージ画像"
-              width="1901"
-              height="931"
-            />
+            <img src="~/assets//img/projects_image_moeplus.webp" decording="async" loading="lazy" alt="イメージ画像" width="1901" height="931"/>
           </p>
         </a>
         <div class="projectItemInfo">
           <p>
-            <a href="https://lp.moeplus.site/" target="_blank" rel="noopener"
-              >LP</a
-            >と<a
-              href="https://www.moeplus.site/"
-              target="_blank"
-              rel="noopener"
-              >ECサイト(BASE)</a
-            ><br />
+            <a href="https://lp.moeplus.site/" target="_blank" rel="noopener">LP<i class="fas fa-external-link-alt"></i></a>と<a href="https://www.moeplus.site/" target="_blank" rel="noopener">ECサイト(BASE)<i class="fas fa-external-link-alt"></i></a><br />
             LP―全LPのコーディング,BASE―全ページのテンプレート改修(一部デザイン提案)
           </p>
           <p>HTML/CSS/JavaScript/BASE</p>
@@ -71,13 +40,9 @@
       </div>
       <div class="projectItem">
         <a href="./projects/chainGeometry/" target="_blank" rel="noopener">
-          <h3>Three.jsの鎖</h3>
+          <h3>Three.jsの鎖<i class="fas fa-external-link-alt"></i></h3>
           <p class="projectImage">
-            <img
-              src="~/assets//img/projects_image_chainGeometry.webp"
-              decording="async"
-              loading="lazy"
-              alt="イメージ画像"
+            <img src="~/assets//img/projects_image_chainGeometry.webp" decording="async" loading="lazy" alt="イメージ画像"
             />
           </p>
         </a>
@@ -93,22 +58,10 @@
         </p>
       </div>
       <div class="projectItem">
-        <a
-          class="projectItemLink"
-          href="./projects/imageToAlt/"
-          target="_blank"
-          rel="noopener"
-        >
-          <h3>画像から日本語テキストを抽出するページ</h3>
+        <a class="projectItemLink" href="./projects/imageToAlt/" target="_blank" rel="noopener">
+          <h3>「画像からテキストを抽出する」ページ<i class="fas fa-external-link-alt"></i></h3>
           <p class="projectImage">
-            <img
-              src="~/assets//img/projects_image_scrapingAlt.webp"
-              decording="async"
-              loading="lazy"
-              alt="イメージ画像"
-              width="1918"
-              height="931"
-            />
+            <img src="~/assets//img/projects_image_scrapingAlt.webp" decording="async" loading="lazy" alt="イメージ画像" width="1918" height="931"/>
           </p>
         </a>
         <div class="projectItemInfo">
@@ -124,22 +77,10 @@
       </div>
 
       <div class="projectItem">
-        <a
-          class="projectItemLink"
-          href="https://moribus.jp/service/casting/"
-          target="_blank"
-          rel="noopener"
-        >
-          <h3>Moribus</h3>
+        <a class="projectItemLink" href="https://moribus.jp/service/casting/" target="_blank" rel="noopener">
+          <h3>Moribus<i class="fas fa-external-link-alt"></i></h3>
           <p class="projectImage">
-            <img
-              src="~/assets//img/projects_image_moribus.webp"
-              decording="async"
-              loading="lazy"
-              alt="moribus"
-              width="1918"
-              height="931"
-            />
+            <img src="~/assets//img/projects_image_moribus.webp" decording="async" loading="lazy" alt="moribus" width="1918" height="931"/>
           </p>
         </a>
         <div class="projectItemInfo">
@@ -152,22 +93,10 @@
         </p>
       </div>
       <div class="projectItem">
-        <a
-          class="projectItemLink"
-          href="https://needle-biyou.com/lporder/002/nc-056S7DO3BGG/"
-          target="_blank"
-          rel="noopener"
-        >
-          <h3>ヤーマン/ニードルリフトクリーム</h3>
+        <a class="projectItemLink" href="https://needle-biyou.com/lporder/002/nc-056S7DO3BGG/" target="_blank" rel="noopener">
+          <h3>ヤーマン/ニードルリフトクリーム<i class="fas fa-external-link-alt"></i></h3>
           <p class="projectImage">
-            <img
-              src="~/assets//img/projects_image_yaman.webp"
-              decording="async"
-              loading="lazy"
-              alt="イメージ画像"
-              width="1901"
-              height="931"
-            />
+            <img src="~/assets//img/projects_image_yaman.webp" decording="async" loading="lazy" alt="イメージ画像" width="1901" height="931"/>
           </p>
         </a>
         <div class="projectItemInfo">
@@ -185,6 +114,8 @@
 </template>
 
 <style lang="scss" scoped>
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css");
+
 #projects {
   scroll-margin-top: var(--header-height);
 
@@ -207,8 +138,18 @@
 
       h3{
         margin-bottom: 0.7em;
+
+        @media (width <=960px) {
+          // アイコンを含めて1行に収めるオーバーライド
+          font-size: 1.3em;
+        }
       }
 
+      i{
+          padding-inline: 0.5em;
+          font-size: 0.7em;
+          vertical-align: middle;
+        }
       .projectImage {
         margin-bottom: 5%;
         overflow: hidden;
@@ -228,9 +169,7 @@
           font-size: 1.3em;
         }
       }
-
-
-      }
     }
   }
+}
 </style>
