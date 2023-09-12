@@ -25,5 +25,6 @@ const config: NuxtConfig = {
     // SCSS ファイルのパスを追加
     '@/assets/styles/main.scss',
   ],
+}
 
 export default config;
