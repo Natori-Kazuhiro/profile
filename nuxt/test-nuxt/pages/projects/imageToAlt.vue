@@ -1,9 +1,7 @@
 <template>
-	<div id="wrap">
-		<header>
-			<h1>「画像からテキストを抽出する」ページです！</h1>
-		</header>
-		<main>
+	<main id="wrap">
+		<h1>「画像からテキストを抽出する」ページです！</h1>
+		<div class="imageToAlt">
 			<section class="inputWrap">
 				<!-- 画像読み込み -->
 				<div class="inputFile">
@@ -29,22 +27,13 @@
 				<textarea id="outputText" type="text"></textarea>
 			</section>
 			<!-- /outputWrap -->
-		</main>
-	</div>
-	<!-- /#wrap -->
+		</div>
+	</main>
 </template>
 
 <script>
 export default {
-  mounted() {
-    // jQueryの読み込み
-    const jqueryScript = document.createElement('script');
-    jqueryScript.src = 'https://code.jquery.com/jquery-3.6.0.min.js';
-    jqueryScript.integrity = 'sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=';
-    jqueryScript.crossOrigin = 'anonymous';
-    jqueryScript.defer = true;
-    document.head.appendChild(jqueryScript);
-
+mounted() {
     // Tesseract.jsの読み込み
     const tesseractScript = document.createElement('script');
     tesseractScript.src = 'https://unpkg.com/tesseract.js@2.0.2/dist/tesseract.min.js';
@@ -53,122 +42,129 @@ export default {
 
     // Vue.jsのインスタンスがマウントされたときに特定の処理を実行
     this.runSpecialProcess();
-  },
-  methods: {
-			// クリップボードへのコピー
-			copyToClipboard() {
-				var copyTarget = document.getElementById("outputText");
-				copyTarget.select();
-				// 選択しているテキストをクリップボードにコピーする
-				document.execCommand("Copy");
-				// コピーをお知らせする
-				alert("コピーしました！ :  \n" + copyTarget.value);
-			},
+},
+methods: {
+	// クリップボードへのコピー
+	copyToClipboard() {
+		var copyTarget = document.getElementById("outputText");
+		copyTarget.select();
+		// 選択しているテキストをクリップボードにコピーする
+		document.execCommand("Copy");
+		// コピーをお知らせする
+		alert("コピーしました！ :  \n" + copyTarget.value);
+	},
 
     runSpecialProcess() {
-			const imageZone = document.getElementById("image_zone");
-			imageZone.addEventListener("change", resizePinnedImage, false);
+		const imageZone = document.getElementById("image_zone");
+		imageZone.addEventListener("change", resizePinnedImage, false);
 
-			function resizePinnedImage(e) {
-				const file = e.target.files[0];
-				if (!file.type.match("image.*")) {
-					return;
-				}
-				scrapingText(file);
+		function resizePinnedImage(e) {
+			const file = e.target.files[0];
+			if (!file.type.match("image.*")) {
+				return;
 			}
+			scrapingText(file);
+		}
 
-			function resetOutputText() {
-				document.getElementById("outputText").value = "画像から文字を抽出中";
-			}
+		function resetOutputText() {
+			document.getElementById("outputText").value = "...画像から文字を抽出中";
+		}
 
-			function scrapingText(file) {
-				resetOutputText();
-				imageToCanvas(file)
-					.then(function (canvas) {
-						Tesseract.recognize(
-							canvas, // Canvasを認識
-							"jpn" // 日本語を指定 英語はeng
-						)
-							// テキストの出力
-							.then(({ data: { text } }) => {
-								const out = document.getElementById("outputText");
-								out.value = text;
+		function scrapingText(file) {
+			resetOutputText();
+			imageToCanvas(file)
+				.then(function (canvas) {
+					Tesseract.recognize(
+						canvas, // Canvasを認識
+						"jpn" // 日本語を指定 英語はeng
+					)
+						// テキストの出力
+						.then(({ data: { text } }) => {
+							const out = document.getElementById("outputText");
+							out.value = text;
+						});
+				})
+				.catch(function (error) {
+					console.error(error);
+				});
+		}
+
+		function imageToCanvas(imageFile) {
+			return new Promise(function (resolve, reject) {
+				readImage(imageFile)
+					.then(function (src) {
+						loadImage(src)
+							.then(function (image) {
+								const canvas = document.getElementById("canvas");
+								const ctx = canvas.getContext("2d");
+								// スケール2倍にしてcanvasへ描画
+								const scale = 2;
+								canvas.width = image.width * scale;
+								canvas.height = image.height * scale;
+								ctx.drawImage(
+									image,
+									(image.width - canvas.width / scale) / 2,
+									(image.height - canvas.height / scale) / 2,
+									canvas.width / scale,
+									canvas.height / scale,
+									0,
+									0,
+									canvas.width,
+									canvas.height
+								);
+								resolve(canvas);
+							})
+							.catch(function (error) {
+								reject(error);
 							});
 					})
 					.catch(function (error) {
-						console.error(error);
+						reject(error);
 					});
-			}
-
-			function imageToCanvas(imageFile) {
-				return new Promise(function (resolve, reject) {
-					readImage(imageFile)
-						.then(function (src) {
-							loadImage(src)
-								.then(function (image) {
-									const canvas = document.getElementById("canvas");
-									const ctx = canvas.getContext("2d");
-									// スケール2倍にしてcanvasへ描画
-									const scale = 2;
-									canvas.width = image.width * scale;
-									canvas.height = image.height * scale;
-									ctx.drawImage(
-										image,
-										(image.width - canvas.width / scale) / 2,
-										(image.height - canvas.height / scale) / 2,
-										canvas.width / scale,
-										canvas.height / scale,
-										0,
-										0,
-										canvas.width,
-										canvas.height
-									);
-									resolve(canvas);
-								})
-								.catch(function (error) {
-									reject(error);
-								});
-						})
-						.catch(function (error) {
-							reject(error);
-						});
-				});
-			}
-
-			function readImage(image) {
-				return new Promise(function (resolve, reject) {
-					const reader = new FileReader();
-					reader.onload = function () {
-						resolve(reader.result);
-					};
-					reader.onerror = function (e) {
-						reject(e);
-					};
-					reader.readAsDataURL(image);
-				});
-			}
-
-			function loadImage(src) {
-				return new Promise(function (resolve, reject) {
-					const img = new Image();
-					img.onload = function () {
-						resolve(img);
-					};
-					img.onerror = function (e) {
-						reject(e);
-					};
-					img.src = src;
-				});
-			}
-
-			// 画像が変更された時にファイル名を変更する
-			$("input#image_zone").on("change", function () {
-				var file = $(this).prop("files")[0];
-				$("p.image_zone_fileState").text(file.name);
 			});
 		}
-	}
 
+		function readImage(image) {
+			return new Promise(function (resolve, reject) {
+				const reader = new FileReader();
+				reader.onload = function () {
+					resolve(reader.result);
+				};
+				reader.onerror = function (e) {
+					reject(e);
+				};
+				reader.readAsDataURL(image);
+			});
+		}
+
+		function loadImage(src) {
+			return new Promise(function (resolve, reject) {
+				const img = new Image();
+				img.onload = function () {
+					resolve(img);
+				};
+				img.onerror = function (e) {
+					reject(e);
+				};
+				img.src = src;
+			});
+		}
+
+		// ファイル名を表示する
+		// input要素を取得
+		const input = document.getElementById("image_zone");
+		// input要素のchangeイベントリスナーを追加
+		input.addEventListener("change", function() {
+			console.log("changed");
+			// input要素から選択されたファイルを取得
+			const file = this.files[0];
+			
+			// p要素を取得し、ファイル名を表示
+			const fileStateParagraph = document.querySelector("p.image_zone_fileState");
+			fileStateParagraph.textContent = file ? file.name : "ファイルが選択されていません";
+		});
+	}
+}
 };
 
 </script>
@@ -193,6 +189,8 @@ body {
 	height: 100%;
 	margin: 0;
 	overflow: hidden;
+	font-family: YakuHanJP, "Noto Sans JP", sans-serif;
+	font-feature-settings: "palt";
 	background: linear-gradient(167deg,
 			var(--color-blue),
 			rgba(236, 100, 42, 0.1)),
@@ -204,18 +202,16 @@ body {
 	}
 }
 
-#wrap {
-	width: 95%;
-	margin: auto;
-	font-family: YakuHanJP, "Noto Sans JP", sans-serif;
-	font-feature-settings: "palt";
-}
+main {
+	// グローバルなスタイルを一部リセット
+	width: min(1200px, 100%);
+	section, section:first-of-type{
+		margin: initial;
+		padding: initial;
+	}
 
-header {
-	width: 100%;
-
-	@media (width <=750px) {
-		height: 15vh;
+	@media (1200px >= width >= 750px){
+		padding: 0 3%;
 	}
 
 	h1 {
@@ -227,150 +223,151 @@ header {
 			padding: 5vh 0;
 		}
 	}
-}
 
-main {
-	display: flex;
-	flex-wrap: wrap;
-
-	@media (width <=750px) {
-		height: 85vh;
-		flex-wrap: nowrap;
-		justify-content: space-between;
-	}
-
-	.inputWrap {
-		width: 36%;
-
-		.inputFile {
-			display: flex;
-
-			@media (width <=750px) {
-				position: relative;
-			}
-		}
-
-		.image_zone_fileState {
-			@media (width <=750px) {
-				position: absolute;
-				inset: 120% auto 0 3em;
-				margin: 0;
-				font-size: 1vw;
-			}
-		}
-
-		input#image_zone {
-			display: none;
-		}
-
-		.image_zone_fileState {
-			display: flex;
-			padding: 0.5em 1em 0.5em 0.5em;
-			color: var(--color-white);
-			align-items: center;
-
-			@media (width <=750px) {
-				position: absolute;
-				inset: 120% auto 0 3em;
-				margin: 0;
-				font-size: 1vw;
-			}
-		}
-
-		#canvas {
-			width: fit-content;
-			max-width: 90%;
-			height: fit-content;
-			max-height: 70vh;
-			display: block;
-
-			@media (width <=750px) {
-				max-width: 100%;
-				height: auto;
-				max-height: 70vh;
-				margin-bottom: auto;
-			}
-		}
-	}
-
-	.outputWrap {
-		width: 64%;
-
-		#outputText {
-			width: 100%;
-			height: 70vh;
-			padding: 1em;
-			font-size: min(7vw, 22px);
-
-			input {
-				padding-top: 1em;
-			}
-		}
-
-		textarea {
-			vertical-align: top;
-		}
-	}
-
-	.inputWrap,
-	.outputWrap {
+	.imageToAlt{
 		display: flex;
-		flex-direction: column;
-		padding: 1em 0 2em;
-		font-size: min(12px, 2vw);
-		color: var(--color-white);
+		flex-wrap: wrap;
+		justify-content: space-between;
 
 		@media (width <=750px) {
-			width: 48%;
-			height: 80vh;
-			flex-direction: column-reverse;
+			height: 85vh;
+			flex-wrap: nowrap;
+			justify-content: space-evenly;
 		}
 
-		.sub {
-			padding: 1em 0 2em;
+		.inputWrap {
+			width: 36%;
+
+			.inputFile {
+				display: flex;
+
+				@media (width <=750px) {
+					position: relative;
+				}
+			}
+
+			.image_zone_fileState {
+				@media (width <=750px) {
+					position: absolute;
+					inset: 120% auto 0 3em;
+					margin: 0;
+					font-size: 1vw;
+				}
+			}
+
+			input#image_zone {
+				display: none;
+			}
+
+			.image_zone_fileState {
+				display: flex;
+				padding: 0.5em 1em 0.5em 0.5em;
+				color: var(--color-white);
+				align-items: center;
+
+				@media (width <=750px) {
+					position: absolute;
+					inset: 120% auto 0 3em;
+					margin: 0;
+					font-size: 1vw;
+				}
+			}
+
+			#canvas {
+				width: fit-content;
+				max-width: 90%;
+				height: fit-content;
+				max-height: 70vh;
+				display: block;
+
+				@media (width <=750px) {
+					max-width: 100%;
+					height: auto;
+					max-height: 70vh;
+					margin-bottom: auto;
+				}
+			}
+		}
+
+		.outputWrap {
+			width: 64%;
+
+			#outputText {
+				width: 100%;
+				height: 70vh;
+				padding: 1em;
+				font-size: min(7vw, 22px);
+
+				input {
+					padding-top: 1em;
+				}
+			}
+
+			textarea {
+				vertical-align: top;
+			}
+		}
+
+		.inputWrap,
+		.outputWrap {
+			display: flex;
+			width: 48%;
+			flex-direction: column;
 			font-size: min(12px, 2vw);
 			color: var(--color-white);
 
 			@media (width <=750px) {
+				width: 48%;
+				height: 80vh;
+				flex-direction: column-reverse;
+			}
+
+			.sub {
 				padding: 1em 0 2em;
-				font-size: 1vw;
+				font-size: min(12px, 2vw);
+				color: var(--color-white);
+
+				@media (width <=750px) {
+					padding: 1em 0 2em;
+					font-size: 1vw;
+				}
 			}
 		}
-	}
 
-	.inputWrap .image_zone_label,
-	.outputWrap #copyText {
-		width: 400px;
-		height: auto;
-		padding: 1em 0;
-		position: relative;
-		line-height: 1;
-		text-align: center;
-		font-size: min(6vw, 20px);
-		font-weight: 700;
-		color: var(--color-white);
-		background-color: var(--color-orange);
-		border-radius: 7px;
-		border: none;
-		cursor: pointer;
+		.inputWrap .image_zone_label,
+		.outputWrap #copyText {
+			width: min(400px, 100%);
+			height: auto;
+			padding: 1em 0;
+			position: relative;
+			line-height: 1;
+			text-align: center;
+			font-size: min(6vw, 20px);
+			font-weight: 700;
+			color: var(--color-white);
+			background-color: var(--color-orange);
+			border-radius: 7px;
+			border: none;
+			cursor: pointer;
 
-		@media (width <=750px) {
-			width: 100%;
-			font-size: 3vw;
+			@media (width <=750px) {
+				width: 100%;
+				font-size: 3vw;
+			}
 		}
-	}
 
-	.inputWrap .image_zone_label:hover,
-	.outputWrap #copyText:hover {
-		transform: translateY(0.1em);
-		transition: 0.2s;
-		opacity: 0.7;
-	}
+		.inputWrap .image_zone_label:hover,
+		.outputWrap #copyText:hover {
+			transform: translateY(0.1em);
+			transition: 0.2s;
+			opacity: 0.7;
+		}
 
-	.inputWrap .image_zone_label i,
-	.outputWrap #copyText i {
-		position: absolute;
-		inset: 1em auto 1em 1em;
+		.inputWrap .image_zone_label i,
+		.outputWrap #copyText i {
+			position: absolute;
+			inset: 1em auto 1em 1em;
+		}
 	}
 }
 </style>
