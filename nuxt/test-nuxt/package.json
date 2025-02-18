@@ -106,7 +106,7 @@
     "crc-32": "^1.2.2",
     "crc32-stream": "^4.0.2",
     "create-require": "^1.1.1",
-    "cross-spawn": "^7.0.3",
+    "cross-spawn": "^7.0.6",
     "css-declaration-sorter": "^6.4.1",
     "css-select": "^5.1.0",
     "css-tree": "^2.3.1",
