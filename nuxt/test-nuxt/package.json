@@ -57,7 +57,7 @@
     "boolbase": "^1.0.0",
     "boxen": "^7.1.1",
     "bplist-parser": "^0.2.0",
-    "brace-expansion": "^2.0.1",
+    "brace-expansion": "^2.0.2",
     "braces": "^3.0.3",
     "browserslist": "^4.21.10",
     "buffer": "^5.7.1",
