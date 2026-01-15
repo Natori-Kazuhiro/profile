@@ -213,7 +213,7 @@
     "gopd": "^1.0.1",
     "graceful-fs": "^4.2.11",
     "gzip-size": "^7.0.0",
-    "h3": "^1.8.0",
+    "h3": "^1.15.5",
     "has": "^1.0.3",
     "has-flag": "^3.0.0",
     "has-property-descriptors": "^1.0.0",
