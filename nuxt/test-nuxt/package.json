@@ -46,7 +46,7 @@
     "asynckit": "^0.4.0",
     "autoprefixer": "^10.4.15",
     "available-typed-arrays": "^1.0.5",
-    "axios": "^1.13.0",
+    "axios": "^1.13.5",
     "balanced-match": "^1.0.2",
     "base64-js": "^1.5.1",
     "big-integer": "^1.6.51",
