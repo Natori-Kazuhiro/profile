@@ -319,7 +319,7 @@
     "mime-db": "^1.52.0",
     "mime-types": "^2.1.35",
     "mimic-fn": "^4.0.0",
-    "minimatch": "^5.1.6",
+    "minimatch": "^10.2.1",
     "minimist": "^1.2.8",
     "minipass": "^5.0.0",
     "minipass-collect": "^1.0.2",
