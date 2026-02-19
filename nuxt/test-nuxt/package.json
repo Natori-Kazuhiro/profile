@@ -293,7 +293,7 @@
     "lilconfig": "^2.1.0",
     "listhen": "^1.4.0",
     "local-pkg": "^0.4.3",
-    "lodash": "^4.17.21",
+    "lodash": "^4.17.23",
     "lodash.debounce": "^4.0.8",
     "lodash.defaults": "^4.2.0",
     "lodash.difference": "^4.5.0",
