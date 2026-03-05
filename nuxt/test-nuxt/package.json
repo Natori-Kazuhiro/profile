@@ -227,7 +227,7 @@
     "html-tags": "^3.3.1",
     "http-cache-semantics": "^4.1.1",
     "http-errors": "^2.0.0",
-    "http-proxy-agent": "^5.0.0",
+    "http-proxy-agent": "^7.0.2",
     "http-shutdown": "^1.2.2",
     "https-proxy-agent": "^7.0.1",
     "httpxy": "^0.1.2",
