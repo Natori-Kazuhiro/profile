@@ -386,7 +386,7 @@
     "pend": "^1.2.0",
     "perfect-debounce": "^1.0.0",
     "picocolors": "^1.0.0",
-    "picomatch": "^2.3.1",
+    "picomatch": "^2.3.2",
     "pify": "^2.3.0",
     "pinkie": "^2.0.4",
     "pinkie-promise": "^2.0.1",
