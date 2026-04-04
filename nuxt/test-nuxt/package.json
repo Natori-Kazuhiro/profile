@@ -130,7 +130,7 @@
     "default-browser-id": "^3.0.0",
     "define-lazy-prop": "^2.0.0",
     "define-properties": "^1.2.0",
-    "defu": "^6.1.2",
+    "defu": "^6.1.6",
     "delayed-stream": "^1.0.0",
     "delegates": "^1.0.0",
     "denque": "^2.1.0",
